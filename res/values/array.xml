@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="drawerArray">
+        <item>News</item>
+        <item>Categorie</item>
+        <item>Strutture</item>
+        <item>Parco le Fiorine</item>
+        <item>Zeleghe</item>
+        <item>Musei Colli Euganei</item>
+        <item>Venetian Hostel</item>
+        <item>Casa Marina</item>
+        <item>Ostello Colli Euganei</item>
+    </array>
+    <array name="categories">
+        <item>Categoria1</item>
+        <item>Categoria2</item>
+        <item>Categoria3</item>
+        <item>Categoria4</item>
+        <item>Categoria5</item>
+    </array>
+
+</resources>
