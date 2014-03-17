@@ -13,10 +13,10 @@ import com.lorenzobraghetto.cooptdm.R;
 
 public class NewsAdapter extends BaseAdapter {
 
-	private List<String> mListCard;
+	private List<News> mListCard;
 	private LayoutInflater mInflater;
 
-	public NewsAdapter(Context context, List<String> listCard) {
+	public NewsAdapter(Context context, List<News> listCard) {
 		this.mListCard = listCard;
 		mInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -39,6 +39,8 @@ public class NewsAdapter extends BaseAdapter {
 
 	public static class ViewHolder {
 		public TextView txtView;
+		public TextView data;
+
 	}
 
 	@Override
@@ -49,14 +51,17 @@ public class NewsAdapter extends BaseAdapter {
 
 			convertView = mInflater.inflate(R.layout.item_news, null);
 			holder.txtView = (TextView) convertView
-					.findViewById(R.id.txtView);
+					.findViewById(R.id.titoloNews);
+			holder.data = (TextView) convertView
+					.findViewById(R.id.dataNews);
 
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		holder.txtView.setText(mListCard.get(arg0));
+		holder.txtView.setText(mListCard.get(arg0).getTitolo());
+		holder.data.setText(mListCard.get(arg0).getData());
 
 		return convertView;
 	}

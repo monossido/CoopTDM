@@ -103,7 +103,6 @@ public class MainActivity extends SherlockFragmentActivity {
 		firstFragment.setArguments(bundle);
 		manager.beginTransaction()
 				.replace(R.id.content_frame, firstFragment).commit();
-
 	}
 
 	@Override
@@ -119,27 +118,38 @@ public class MainActivity extends SherlockFragmentActivity {
 	}
 
 	private void openFragment(int position) {
+		FragmentNews newsFragment = new FragmentNews();
+		FragmentStruttura strutturaFragment = new FragmentStruttura();
 		switch (position) {
 		case 0:
-			FragmentNews firstFragment = new FragmentNews();
 			Bundle bundle = new Bundle();
 			bundle.putBoolean("categories", false);
-			firstFragment.setArguments(bundle);
+			newsFragment.setArguments(bundle);
 			manager.beginTransaction()
-					.replace(R.id.content_frame, firstFragment).commit();
+					.replace(R.id.content_frame, newsFragment).commit();
 			break;
 		case 1:
-			FragmentNews secondFragment = new FragmentNews();
 			Bundle bundleSecond = new Bundle();
 			bundleSecond.putBoolean("categories", true);
-			secondFragment.setArguments(bundleSecond);
+			newsFragment.setArguments(bundleSecond);
 			manager.beginTransaction()
-					.replace(R.id.content_frame, secondFragment).commit();
+					.replace(R.id.content_frame, newsFragment).commit();
 			break;
-		case 2:
-			FragmentStruttura thirdFragment = new FragmentStruttura();
+		case 3:
 			manager.beginTransaction()
-					.replace(R.id.content_frame, thirdFragment).commit();
+					.replace(R.id.content_frame, strutturaFragment).commit();
+			break;
+		case 4:
+			manager.beginTransaction()
+					.replace(R.id.content_frame, strutturaFragment).commit();
+			break;
+		case 5:
+			manager.beginTransaction()
+					.replace(R.id.content_frame, strutturaFragment).commit();
+			break;
+		case 6:
+			manager.beginTransaction()
+					.replace(R.id.content_frame, strutturaFragment).commit();
 			break;
 		default:
 			break;

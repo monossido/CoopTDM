@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lorenzobraghetto.cooptdm.NowLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="#e3e3e3"
+    android:orientation="vertical" >
 
-    <com.lorenzobraghetto.cooptdm.NowLayout
+    <RelativeLayout
+        style="@style/nowCardStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#e3e3e3"
-        android:orientation="vertical" >
+        android:layout_height="match_parent" >
 
         <TextView
-            android:id="@+id/txtView"
-            style="@style/nowCardStyle"
-            android:layout_width="match_parent"
+            android:id="@+id/titoloNews"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hello_world" />
-    </com.lorenzobraghetto.cooptdm.NowLayout>
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#a2c2a1"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/dataNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#a0a0a0"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+</com.lorenzobraghetto.cooptdm.NowLayout>
