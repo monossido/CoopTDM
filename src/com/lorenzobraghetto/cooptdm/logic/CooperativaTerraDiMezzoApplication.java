@@ -19,7 +19,9 @@ public class CooperativaTerraDiMezzoApplication extends Application {
 	private List<News> newsTot = new ArrayList<News>();
 	private List<Categories> categories = new ArrayList<Categories>();
 
-	public void getNews(final CallbackNews callback) {//TODO cats
+	public void getNews(final CallbackNews callback) {
+		news.clear();
+		categories.clear();
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.get("http://monossido.ath.cx/cooptdm/api/news.php", new AsyncHttpResponseHandler() {
 			@Override

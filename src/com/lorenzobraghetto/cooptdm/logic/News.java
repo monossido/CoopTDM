@@ -30,4 +30,11 @@ public class News {
 		return data;
 	}
 
+	public String getTesto() {
+		return testo;
+	}
+
+	public String getOra() {
+		return ora;
+	}
 }

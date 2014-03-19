@@ -40,7 +40,8 @@ public class NewsAdapter extends BaseAdapter {
 	public static class ViewHolder {
 		public TextView txtView;
 		public TextView data;
-
+		public TextView ora;
+		public TextView testo;
 	}
 
 	@Override
@@ -54,6 +55,10 @@ public class NewsAdapter extends BaseAdapter {
 					.findViewById(R.id.titoloNews);
 			holder.data = (TextView) convertView
 					.findViewById(R.id.dataNews);
+			holder.ora = (TextView) convertView
+					.findViewById(R.id.oraNews);
+			holder.testo = (TextView) convertView
+					.findViewById(R.id.testoNews);
 
 			convertView.setTag(holder);
 		} else {
@@ -62,6 +67,12 @@ public class NewsAdapter extends BaseAdapter {
 
 		holder.txtView.setText(mListCard.get(arg0).getTitolo());
 		holder.data.setText(mListCard.get(arg0).getData());
+		holder.testo.setText(mListCard.get(arg0).getTesto().replace("\\n", "\n"));
+		String ora = mListCard.get(arg0).getOra();
+		if (ora.length() != 0)
+			holder.ora.setText(ora);
+		else
+			holder.ora.setVisibility(View.GONE);
 
 		return convertView;
 	}
