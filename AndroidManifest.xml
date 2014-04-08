@@ -29,6 +29,20 @@
             android:name="com.lorenzobraghetto.cooptdm.MainActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="com.lorenzobraghetto.cooptdm.StruttureActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.TranslucentActionBar" >
+        </activity>
+
+        <service android:name="com.lorenzobraghetto.cooptdm.logic.CoopTDMNewsService" >
+        </service>
+
+        <receiver android:name="com.lorenzobraghetto.cooptdm.BootReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

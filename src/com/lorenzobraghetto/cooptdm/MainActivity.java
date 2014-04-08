@@ -3,6 +3,7 @@ package com.lorenzobraghetto.cooptdm;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -17,7 +18,7 @@ import android.widget.ListView;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.lorenzobraghetto.cooptdm.fragments.FragmentNews;
-import com.lorenzobraghetto.cooptdm.fragments.FragmentStruttura;
+import com.lorenzobraghetto.cooptdm.logic.CoopTDMNewsService;
 import com.lorenzobraghetto.cooptdm.logic.Header;
 import com.lorenzobraghetto.cooptdm.logic.Item;
 import com.lorenzobraghetto.cooptdm.logic.ItemAdapter;
@@ -25,16 +26,17 @@ import com.lorenzobraghetto.cooptdm.logic.ListItem;
 
 public class MainActivity extends SherlockFragmentActivity {
 
-	private DrawerLayout drawer;
+	protected DrawerLayout drawer;
 	private ItemAdapter adapter;
-	private ListView drawerList;
+	protected ListView drawerList;
 	private ActionBarDrawerToggle actionBarDrawerToggle;
-	private FragmentManager manager;
+	protected FragmentManager manager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		startService(new Intent(this, CoopTDMNewsService.class));
 
 		drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -50,6 +52,9 @@ public class MainActivity extends SherlockFragmentActivity {
 		ListItem item6 = new ListItem(items[6], R.drawable.ic_launcher, this);
 		ListItem item7 = new ListItem(items[7], R.drawable.ic_launcher, this);
 		ListItem item8 = new ListItem(items[8], R.drawable.ic_launcher, this);
+		Header item9 = new Header(items[9]);
+		ListItem item10 = new ListItem(items[10], R.drawable.ic_launcher, this);
+		ListItem item11 = new ListItem(items[11], R.drawable.ic_launcher, this);
 
 		List<Item> itemsList = new ArrayList<Item>();
 		itemsList.add(item0);
@@ -61,6 +66,9 @@ public class MainActivity extends SherlockFragmentActivity {
 		itemsList.add(item6);
 		itemsList.add(item7);
 		itemsList.add(item8);
+		itemsList.add(item9);
+		itemsList.add(item10);
+		itemsList.add(item11);
 
 		adapter = new ItemAdapter(this, itemsList);
 		drawerList = (ListView) findViewById(R.id.left_drawer);
@@ -97,12 +105,17 @@ public class MainActivity extends SherlockFragmentActivity {
 
 		manager = getSupportFragmentManager();
 
+		startFirstFragment();
+	}
+
+	protected void startFirstFragment() {
 		FragmentNews firstFragment = new FragmentNews();
 		Bundle bundle = new Bundle();
 		bundle.putBoolean("categories", false);
 		firstFragment.setArguments(bundle);
 		manager.beginTransaction()
 				.replace(R.id.content_frame, firstFragment).commit();
+		drawer.openDrawer(drawerList);
 	}
 
 	@Override
@@ -117,9 +130,9 @@ public class MainActivity extends SherlockFragmentActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	private void openFragment(int position) {
+	protected void openFragment(int position) {
 		FragmentNews newsFragment = new FragmentNews();
-		FragmentStruttura strutturaFragment = new FragmentStruttura();
+		Intent struttureIntent = new Intent(MainActivity.this, StruttureActivity.class);
 		switch (position) {
 		case 0:
 			Bundle bundle = new Bundle();
@@ -136,20 +149,16 @@ public class MainActivity extends SherlockFragmentActivity {
 					.replace(R.id.content_frame, newsFragment).commit();
 			break;
 		case 3:
-			manager.beginTransaction()
-					.replace(R.id.content_frame, strutturaFragment).commit();
+			startActivity(struttureIntent);
 			break;
 		case 4:
-			manager.beginTransaction()
-					.replace(R.id.content_frame, strutturaFragment).commit();
+			startActivity(struttureIntent);
 			break;
 		case 5:
-			manager.beginTransaction()
-					.replace(R.id.content_frame, strutturaFragment).commit();
+			startActivity(struttureIntent);
 			break;
 		case 6:
-			manager.beginTransaction()
-					.replace(R.id.content_frame, strutturaFragment).commit();
+			startActivity(struttureIntent);
 			break;
 		default:
 			break;

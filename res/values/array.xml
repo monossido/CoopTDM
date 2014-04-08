@@ -11,6 +11,9 @@
         <item>Venetian Hostel</item>
         <item>Casa Marina</item>
         <item>Ostello Colli Euganei</item>
+        <item>Altro</item>
+        <item>About</item>
+        <item>Impostazioni</item>
     </array>
     <array name="categories">
         <item>Categoria1</item>

@@ -12,18 +12,19 @@ import android.app.Application;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.lorenzobraghetto.cooptdm.CoopTDMParams;
 
 public class CooperativaTerraDiMezzoApplication extends Application {
 
 	private List<News> news = new ArrayList<News>();
-	private List<News> newsTot = new ArrayList<News>();
+	private List<News> newsTot;
 	private List<Categories> categories = new ArrayList<Categories>();
 
 	public void getNews(final CallbackNews callback) {
 		news.clear();
 		categories.clear();
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get("http://monossido.ath.cx/cooptdm/api/news.php", new AsyncHttpResponseHandler() {
+		client.get(CoopTDMParams.BASE_URL + "api/news.php", new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {
 				JSONObject jso_response = null;
@@ -50,23 +51,22 @@ public class CooperativaTerraDiMezzoApplication extends Application {
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
-				newsTot = news;
+				newsTot = new ArrayList<News>(news);
 				callback.onDownloaded();
 			}
 		});
 	}
 
 	public List<News> getNewsList(Integer idCategoria) {
+		news.clear();
+		news.addAll(newsTot);
 		if (idCategoria != null) {
 			for (Iterator<News> i = news.iterator(); i.hasNext();) {
 				News singolaNews = i.next();
-
 				if (singolaNews.getCategoria() != idCategoria) {
 					i.remove();
 				}
 			}
-		} else {
-			news = newsTot;
 		}
 		return news;
 	}
