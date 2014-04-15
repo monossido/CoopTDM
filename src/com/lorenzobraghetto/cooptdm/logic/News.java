@@ -8,14 +8,20 @@ public class News {
 	private String luogo;
 	private String testo;
 	private int categoria;
+	private Integer id;
 
-	public News(String titolo, String data, String ora, String luogo, String testo, int categoria) {
+	public News(Integer id, String titolo, String data, String ora, String luogo, String testo, int categoria) {
+		this.id = id;
 		this.titolo = titolo;
 		this.data = data;
 		this.ora = ora;
 		this.luogo = luogo;
 		this.testo = testo;
 		this.categoria = categoria;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public String getTitolo() {

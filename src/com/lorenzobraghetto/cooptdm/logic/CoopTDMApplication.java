@@ -9,12 +9,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.lorenzobraghetto.cooptdm.CoopTDMParams;
 
-public class CooperativaTerraDiMezzoApplication extends Application {
+public class CoopTDMApplication extends Application {
 
 	private List<News> news = new ArrayList<News>();
 	private List<News> newsTot;
@@ -24,7 +27,7 @@ public class CooperativaTerraDiMezzoApplication extends Application {
 		news.clear();
 		categories.clear();
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get(CoopTDMParams.BASE_URL + "api/news.php", new AsyncHttpResponseHandler() {
+		client.get(CoopTDMParams.BASE_URL + "api/news.php?api_ley=" + CoopTDMParams.API_KEY, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {
 				JSONObject jso_response = null;
@@ -35,7 +38,7 @@ public class CooperativaTerraDiMezzoApplication extends Application {
 					for (int i = 0; i < jsa.length(); i++) {
 						JSONObject jso = jsa.getJSONObject(i);
 
-						news.add(new News(jso.getString("titolo"), jso.getString("data")
+						news.add(new News(jso.getInt("id"), jso.getString("titolo"), jso.getString("data")
 								, jso.getString("ora"), jso.getString("luogo")
 								, jso.getString("testo"), jso.getInt("categoria")));
 					}
@@ -52,6 +55,10 @@ public class CooperativaTerraDiMezzoApplication extends Application {
 					e.printStackTrace();
 				}
 				newsTot = new ArrayList<News>(news);
+				SharedPreferences pref = getSharedPreferences("CoopTDMSettings", Context.MODE_PRIVATE);
+				Editor editor = pref.edit();
+				editor.putInt("lastNewsId", news.get(news.size() - 1).getId());
+				editor.commit();
 				callback.onDownloaded();
 			}
 		});

@@ -6,5 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="open_drawer">OpenDrawer</string>
     <string name="close_drawer">closenDrawer</string>
+    <string name="notification_title">Novità dalla Terra di Mezzo!</string>
+    <string name="notification_text">Clicca per aprire l\'app</string>
 
 </resources>

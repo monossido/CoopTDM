@@ -17,7 +17,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.lorenzobraghetto.cooptdm.R;
 import com.lorenzobraghetto.cooptdm.logic.Categories;
-import com.lorenzobraghetto.cooptdm.logic.CooperativaTerraDiMezzoApplication;
+import com.lorenzobraghetto.cooptdm.logic.CoopTDMApplication;
 import com.lorenzobraghetto.cooptdm.logic.News;
 import com.lorenzobraghetto.cooptdm.logic.NewsAdapter;
 
@@ -41,7 +41,7 @@ public class FragmentNews extends SherlockFragment implements OnNavigationListen
 
 			ActionBar actionBar = activity.getSupportActionBar();
 
-			cats = ((CooperativaTerraDiMezzoApplication) getActivity().getApplication())
+			cats = ((CoopTDMApplication) getActivity().getApplication())
 					.getCats();
 
 			String[] categories = new String[cats.size()];
@@ -57,10 +57,10 @@ public class FragmentNews extends SherlockFragment implements OnNavigationListen
 			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 			actionBar.setListNavigationCallbacks(list, this);
 
-			news = ((CooperativaTerraDiMezzoApplication) getActivity().getApplication())
+			news = ((CoopTDMApplication) getActivity().getApplication())
 					.getNewsList(actionBar.getSelectedNavigationIndex() + 1);
 		} else {
-			news = ((CooperativaTerraDiMezzoApplication) getActivity().getApplication())
+			news = ((CoopTDMApplication) getActivity().getApplication())
 					.getNewsList(null);
 		}
 		listAdapter = new NewsAdapter(getActivity(), news);
@@ -72,7 +72,7 @@ public class FragmentNews extends SherlockFragment implements OnNavigationListen
 
 	@Override
 	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-		news = ((CooperativaTerraDiMezzoApplication) getActivity().getApplication())
+		news = ((CoopTDMApplication) getActivity().getApplication())
 				.getNewsList(itemPosition + 1);
 		Log.v("COOPTDM", "from fragment, news size=" + news.size());
 		listAdapter.notifyDataSetChanged();
