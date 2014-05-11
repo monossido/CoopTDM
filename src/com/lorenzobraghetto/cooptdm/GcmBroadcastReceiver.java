@@ -1,5 +1,7 @@
 package com.lorenzobraghetto.cooptdm;
 
+import com.lorenzobraghetto.cooptdm.ui.SplashActivity;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;

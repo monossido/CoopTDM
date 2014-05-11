@@ -2,7 +2,9 @@ package com.lorenzobraghetto.cooptdm.logic;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +17,10 @@ public class NewsAdapter extends BaseAdapter {
 
 	private List<News> mListCard;
 	private LayoutInflater mInflater;
+	private Activity context;
 
-	public NewsAdapter(Context context, List<News> listCard) {
+	public NewsAdapter(Activity context, List<News> listCard) {
+		this.context = context;
 		this.mListCard = listCard;
 		mInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -42,6 +46,7 @@ public class NewsAdapter extends BaseAdapter {
 		public TextView data;
 		public TextView ora;
 		public TextView testo;
+		public TextView luogo;
 	}
 
 	@Override
@@ -53,6 +58,8 @@ public class NewsAdapter extends BaseAdapter {
 			convertView = mInflater.inflate(R.layout.item_news, null);
 			holder.txtView = (TextView) convertView
 					.findViewById(R.id.titoloNews);
+			holder.luogo = (TextView) convertView
+					.findViewById(R.id.luogoNews);
 			holder.data = (TextView) convertView
 					.findViewById(R.id.dataNews);
 			holder.ora = (TextView) convertView
@@ -66,6 +73,16 @@ public class NewsAdapter extends BaseAdapter {
 		}
 
 		holder.txtView.setText(mListCard.get(arg0).getTitolo());
+
+		int category_int = mListCard.get(arg0).getCategoria();
+		Integer category_color = ((CoopTDMApplication) context.getApplication()).getCategoryColor(category_int);
+		holder.txtView.setTextColor(category_color);
+		Log.v("COOPTDM", "category_color=" + category_color);
+		String luogo = mListCard.get(arg0).getLuogo();
+		if (luogo.length() > 0)
+			holder.luogo.setText(luogo);
+		else
+			holder.luogo.setVisibility(View.GONE);
 		holder.data.setText(mListCard.get(arg0).getData());
 		holder.testo.setText(mListCard.get(arg0).getTesto().replace("\\n", "\n"));
 		String ora = mListCard.get(arg0).getOra();

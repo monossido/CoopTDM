@@ -20,7 +20,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.lorenzobraghetto.cooptdm.CoopTDMParams;
 import com.lorenzobraghetto.cooptdm.R;
-import com.lorenzobraghetto.cooptdm.SplashActivity;
+import com.lorenzobraghetto.cooptdm.ui.SplashActivity;
 
 public class CoopTDMNewsService extends Service {
 
@@ -54,7 +54,8 @@ public class CoopTDMNewsService extends Service {
 
 		RequestParams params = new RequestParams();
 		params.add("lastNewsId", lastNewsId.toString());
-		client.post(CoopTDMParams.BASE_URL + "api/lastNews.php?api_ley=" + CoopTDMParams.API_KEY, params, new AsyncHttpResponseHandler() {
+		params.add("api_key", CoopTDMParams.API_KEY);
+		client.post(CoopTDMParams.BASE_URL + "api/lastNews.php", params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {
 				try {

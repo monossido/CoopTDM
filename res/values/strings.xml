@@ -8,5 +8,41 @@
     <string name="close_drawer">closenDrawer</string>
     <string name="notification_title">Novità dalla Terra di Mezzo!</string>
     <string name="notification_text">Clicca per aprire l\'app</string>
+    <string name="orario">Orario</string>
+    <string name="costi">Costi</string>
+    <string name="dove">Dove</string>
+
+    <!-- pref -->
+    <string name="pref_notification">Notifiche</string>
+    <string name="pref_notification_summ">Ricevi notifiche di nuove notizie</string>
+    <string name="pref_about_summ">Applicazione sviluppata da Lorenzo Braghetto per Cooperativa Terra di Mezzo - Licenza GPL</string>
+    <string name="pref_about">About</string>
+    <string name="pref_about_dialog">Applicazione sviluppata da Lorenzo Braghetto per Cooperativa Terra di Mezzo - Licenza GPL - https://github.com/monossido/CoopTDM</string>
+
+    <!-- strutture -->
+    <string name="parco_fiorine_orario"><b>dal 5 Aprile al 02 Giugno 2014</b>\n
+Sabato dalle 15.00 alle 19.30 (ultimo briefing ore 18.30)\n
+Domenica dalle 10.00 alle 19.30 (ultimo briefing ore 18.30)\n\n<b>dal 7 Giugno al 7 Settembre 2014</b>\n
+Sabato e Domenica dalle 10.00 alle 20.00 (ultimo briefing ore 19.00)\n
+dal Lunedì al Venerdì dalle 15.30 alle 20.00 (ultimo briefing ore 19.00)\n\n<b>dal 8 Settembre al 28 Settembre 2014</b>\n
+Sabato dalle 15.00 alle 19.00 (ultimo briefing ore 18.00)\n
+Domenica dalle 10.00 alle 19.00 (ultimo briefing ore 18.00)</string>
+    <string name="parco_fiorine_costi">percorso verde 5€\n
+        (obbligatorio) area briefing 5€\n
+        percorso blu 5€\n
+        percorso rosso 8€\n
+        persorso nero 8€\n</string>
+    <string name="parco_fiorine_dove">località Passo Fiorine \n
+Via Monte della Madonna\n
+35037 Teolo (Padova)\n
+Tel. 338.5360848\n
+Tel. 049.9131781\n</string>
+    <string name="parco_fiorine_presentazione">
+<![CDATA[<h2>Presentazione</h2>Finalmente un parco con percorsi acrobatici all\'interno del Parco Regionale dei Colli Euganei, situato presso il «Passo Fiorine» a Teolo. Un luogo di svago e socializzazione, nato per soddisfare la propria sete di avventura, voglia di sperimentarsi e soprattutto per essere più a contatto con la natura.
+\n\n
+Un sano divertimento ricreativo, che permette agli utenti di sperimentare le proprie qualità fisiche, camminando attraverso percorsi elevati più o meno difficili e vivendo nuovi momenti ricchi di emozione.
+\n\n
+L\'ingresso al parco è libero, si paga solamente per accedere ai percorsi acrobatici.]]>
+    </string>
 
 </resources>

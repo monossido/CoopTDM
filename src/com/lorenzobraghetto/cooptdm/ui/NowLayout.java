@@ -1,4 +1,4 @@
-package com.lorenzobraghetto.cooptdm;
+package com.lorenzobraghetto.cooptdm.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
+
+import com.lorenzobraghetto.cooptdm.R;
 
 public class NowLayout extends LinearLayout implements OnGlobalLayoutListener {
 	public NowLayout(Context context, AttributeSet attrs) {

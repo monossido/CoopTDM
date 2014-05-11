@@ -1,4 +1,4 @@
-package com.lorenzobraghetto.cooptdm;
+package com.lorenzobraghetto.cooptdm.ui;
 
 import java.io.IOException;
 import java.util.regex.Pattern;
@@ -22,12 +22,15 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.lorenzobraghetto.cooptdm.CoopTDMParams;
+import com.lorenzobraghetto.cooptdm.DeviceID;
+import com.lorenzobraghetto.cooptdm.R;
 import com.lorenzobraghetto.cooptdm.logic.CallbackNews;
 import com.lorenzobraghetto.cooptdm.logic.CoopTDMApplication;
 
 public class SplashActivity extends Activity {
 
-	String SENDER_ID = "22089529162";
+	String SENDER_ID = "904370826051";
 	private GoogleCloudMessaging gcm;
 	private String regid;
 
@@ -122,18 +125,20 @@ public class SplashActivity extends Activity {
 
 	private void sendRegistrationIdToBackend() {
 		String possibleEmail = "";
-		Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+		Pattern emailPattern = Patterns.EMAIL_ADDRESS;
 		Account[] accounts = AccountManager.get(this).getAccountsByType("com.google");
 		if (emailPattern.matcher(accounts[0].name).matches()) {
 			possibleEmail = accounts[0].name;
 		}
 		AsyncHttpClient client = new AsyncHttpClient();
 		RequestParams params = new RequestParams();
+		params.put("deviceId", DeviceID.get(this));
 		params.put("registerId", regid);
 		params.put("email", possibleEmail);
 		params.put("android_version", Build.VERSION.SDK_INT + "");
 		params.put("app_version", getAppVersion(this) + "");
-		client.post(CoopTDMParams.BASE_URL + "api/register.php?api_ley=" + CoopTDMParams.API_KEY, params, new AsyncHttpResponseHandler() {
+		params.put("api_key", CoopTDMParams.API_KEY);
+		client.post(CoopTDMParams.BASE_URL + "api/register.php", params, new AsyncHttpResponseHandler() {
 
 			public void onSuccess(String response) {
 				Log.v("COOPTDM", "response=" + response);

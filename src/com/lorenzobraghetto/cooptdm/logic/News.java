@@ -43,4 +43,8 @@ public class News {
 	public String getOra() {
 		return ora;
 	}
+
+	public String getLuogo() {
+		return luogo;
+	}
 }

@@ -12,9 +12,11 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.lorenzobraghetto.cooptdm.CoopTDMParams;
 
 public class CoopTDMApplication extends Application {
@@ -22,12 +24,15 @@ public class CoopTDMApplication extends Application {
 	private List<News> news = new ArrayList<News>();
 	private List<News> newsTot;
 	private List<Categories> categories = new ArrayList<Categories>();
+	private ArrayList<Integer> colors = new ArrayList<Integer>();
 
 	public void getNews(final CallbackNews callback) {
 		news.clear();
 		categories.clear();
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get(CoopTDMParams.BASE_URL + "api/news.php?api_ley=" + CoopTDMParams.API_KEY, new AsyncHttpResponseHandler() {
+		RequestParams params = new RequestParams();
+		params.put("api_key", CoopTDMParams.API_KEY);
+		client.post(CoopTDMParams.BASE_URL + "api/news.php", params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {
 				JSONObject jso_response = null;
@@ -60,6 +65,7 @@ public class CoopTDMApplication extends Application {
 				editor.putInt("lastNewsId", news.get(news.size() - 1).getId());
 				editor.commit();
 				callback.onDownloaded();
+				generateUniqueColors(categories.size());
 			}
 		});
 	}
@@ -84,5 +90,26 @@ public class CoopTDMApplication extends Application {
 
 	public List<Categories> getCats() {
 		return categories;
+	}
+
+	public Integer getCategoryColor(int category_int) {
+		return colors.get(category_int);
+	}
+
+	private void generateUniqueColors(int amount) { //TODO
+		if (colors.size() < amount)
+			colors.add(Color.parseColor("#d10000"));
+		if (colors.size() < amount)
+			colors.add(Color.parseColor("#2b7190"));
+		if (colors.size() < amount)
+			colors.add(Color.parseColor("#ff003b"));
+		if (colors.size() < amount)
+			colors.add(Color.parseColor("#2b9032"));
+		if (colors.size() < amount)
+			colors.add(Color.parseColor("#00bbca"));
+		if (colors.size() < amount)
+			colors.add(Color.parseColor("#cf9600"));
+		if (colors.size() < amount)
+			colors.add(Color.parseColor("#000000"));
 	}
 }

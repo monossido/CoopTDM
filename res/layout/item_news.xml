@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.lorenzobraghetto.cooptdm.NowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lorenzobraghetto.cooptdm.ui.NowLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e3e3e3"
@@ -29,6 +29,18 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/luogoNews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/titoloNews"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/dataNews"
+                android:textColor="#0071bc"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/dataNews"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,7 +58,6 @@
                 android:layout_alignLeft="@+id/dataNews"
                 android:layout_below="@+id/dataNews"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="3dp"
                 android:textColor="#a0a0a0"
                 android:textSize="13sp" />
         </RelativeLayout>
@@ -62,4 +73,4 @@
             android:textSize="15sp" />
     </RelativeLayout>
 
-</com.lorenzobraghetto.cooptdm.NowLayout>
+</com.lorenzobraghetto.cooptdm.ui.NowLayout>
