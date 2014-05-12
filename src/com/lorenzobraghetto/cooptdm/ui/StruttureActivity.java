@@ -35,55 +35,47 @@ public class StruttureActivity extends MainActivity {
 		switch (position) {
 		case 0:
 			Bundle bundle = new Bundle();
-			bundle.putBoolean("categories", false);
 			newsIntent.putExtras(bundle);
 			finish();
 			startActivity(newsIntent);
 			break;
-		case 1:
-			Bundle bundleSecond = new Bundle();
-			bundleSecond.putBoolean("categories", true);
-			newsIntent.putExtras(bundleSecond);
-			finish();
-			startActivity(newsIntent);
-			break;
-		case 3:
+		case 2:
 			arguments.putInt("Struttura", FragmentStruttura.STRUTTURA_PARCO);
 			strutturaFragment.setArguments(arguments);
 			manager.beginTransaction()
 					.replace(R.id.content_frame, strutturaFragment).commit();
 			break;
-		case 4:
+		case 3:
 			arguments.putInt("Struttura", FragmentStruttura.STRUTTURA_ZELEGHE);
 			strutturaFragment.setArguments(arguments);
 			manager.beginTransaction()
 					.replace(R.id.content_frame, strutturaFragment).commit();
 			break;
-		case 5:
+		case 4:
 			arguments.putInt("Struttura", FragmentStruttura.STRUTTURA_MUSEI);
 			strutturaFragment.setArguments(arguments);
 			manager.beginTransaction()
 					.replace(R.id.content_frame, strutturaFragment).commit();
 			break;
-		case 6:
+		case 5:
 			arguments.putInt("Struttura", FragmentStruttura.STRUTTURA_HOSTEL);
 			strutturaFragment.setArguments(arguments);
 			manager.beginTransaction()
 					.replace(R.id.content_frame, strutturaFragment).commit();
 			break;
-		case 7:
+		case 6:
 			arguments.putInt("Struttura", FragmentStruttura.STRUTTURA_CASA);
 			strutturaFragment.setArguments(arguments);
 			manager.beginTransaction()
 					.replace(R.id.content_frame, strutturaFragment).commit();
 			break;
-		case 8:
+		case 7:
 			arguments.putInt("Struttura", FragmentStruttura.STRUTTURA_OSTELLO);
 			strutturaFragment.setArguments(arguments);
 			manager.beginTransaction()
 					.replace(R.id.content_frame, strutturaFragment).commit();
 			break;
-		case 10:
+		case 9:
 			startActivity(new Intent(this, Settings.class));
 			break;
 		default:

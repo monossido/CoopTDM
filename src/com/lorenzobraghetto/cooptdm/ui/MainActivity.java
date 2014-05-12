@@ -44,21 +44,19 @@ public class MainActivity extends SherlockFragmentActivity {
 
 		String[] items = getResources().getStringArray(R.array.drawerArray);
 
-		Header item0 = new Header(items[0]);
-		ListItem item1 = new ListItem(items[1], R.drawable.ic_launcher, this);
+		ListItem item1 = new ListItem(items[0], R.drawable.ic_launcher, this);
 
-		Header item2 = new Header(items[2]);
-		ListItem item3 = new ListItem(items[3], R.drawable.ico_1, this);
-		ListItem item4 = new ListItem(items[4], R.drawable.ico_2, this);
-		ListItem item5 = new ListItem(items[5], R.drawable.ico_3, this);
-		ListItem item6 = new ListItem(items[6], R.drawable.ico_4, this);
-		ListItem item7 = new ListItem(items[7], R.drawable.ico_5, this);
-		ListItem item8 = new ListItem(items[8], R.drawable.ico_6, this);
-		Header item9 = new Header(items[9]);
-		ListItem item10 = new ListItem(items[10], R.drawable.ic_launcher, this);
+		Header item2 = new Header(items[1]);
+		ListItem item3 = new ListItem(items[2], R.drawable.ico_1, this);
+		ListItem item4 = new ListItem(items[3], R.drawable.ico_2, this);
+		ListItem item5 = new ListItem(items[4], R.drawable.ico_3, this);
+		ListItem item6 = new ListItem(items[5], R.drawable.ico_4, this);
+		ListItem item7 = new ListItem(items[6], R.drawable.ico_5, this);
+		ListItem item8 = new ListItem(items[7], R.drawable.ico_6, this);
+		Header item9 = new Header(items[8]);
+		ListItem item10 = new ListItem(items[9], R.drawable.ic_launcher, this);
 
 		List<Item> itemsList = new ArrayList<Item>();
-		itemsList.add(item0);
 		itemsList.add(item1);
 		itemsList.add(item2);
 		itemsList.add(item3);
@@ -111,7 +109,6 @@ public class MainActivity extends SherlockFragmentActivity {
 	protected void startFirstFragment() {
 		FragmentNews firstFragment = new FragmentNews();
 		Bundle bundle = new Bundle();
-		bundle.putBoolean("categories", false);
 		firstFragment.setArguments(bundle);
 		manager.beginTransaction()
 				.replace(R.id.content_frame, firstFragment).commit();
@@ -136,54 +133,47 @@ public class MainActivity extends SherlockFragmentActivity {
 		Bundle bundle = new Bundle();
 		switch (position) {
 		case 0:
-			bundle.putBoolean("categories", false);
 			newsFragment.setArguments(bundle);
 			manager.beginTransaction()
 					.replace(R.id.content_frame, newsFragment).commit();
 			break;
-		case 1:
-			bundle.putBoolean("categories", true);
-			newsFragment.setArguments(bundle);
-			manager.beginTransaction()
-					.replace(R.id.content_frame, newsFragment).commit();
-			break;
-		case 3:
+		case 2:
 			bundle.putInt("Struttura", FragmentStruttura.STRUTTURA_PARCO);
 			struttureIntent.putExtras(bundle);
 			finish();
 			startActivity(struttureIntent);
 			break;
-		case 4:
+		case 3:
 			bundle.putInt("Struttura", FragmentStruttura.STRUTTURA_ZELEGHE);
 			struttureIntent.putExtras(bundle);
 			finish();
 			startActivity(struttureIntent);
 			break;
-		case 5:
+		case 4:
 			bundle.putInt("Struttura", FragmentStruttura.STRUTTURA_MUSEI);
 			struttureIntent.putExtras(bundle);
 			finish();
 			startActivity(struttureIntent);
 			break;
-		case 6:
+		case 5:
 			bundle.putInt("Struttura", FragmentStruttura.STRUTTURA_HOSTEL);
 			struttureIntent.putExtras(bundle);
 			finish();
 			startActivity(struttureIntent);
 			break;
-		case 7:
+		case 6:
 			bundle.putInt("Struttura", FragmentStruttura.STRUTTURA_CASA);
 			struttureIntent.putExtras(bundle);
 			finish();
 			startActivity(struttureIntent);
 			break;
-		case 8:
+		case 7:
 			bundle.putInt("Struttura", FragmentStruttura.STRUTTURA_OSTELLO);
 			struttureIntent.putExtras(bundle);
 			finish();
 			startActivity(struttureIntent);
 			break;
-		case 10:
+		case 9:
 			startActivity(new Intent(this, Settings.class));
 			break;
 		default:

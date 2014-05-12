@@ -45,7 +45,7 @@ public class CoopTDMApplication extends Application {
 
 						news.add(new News(jso.getInt("id"), jso.getString("titolo"), jso.getString("data")
 								, jso.getString("ora"), jso.getString("luogo")
-								, jso.getString("testo"), jso.getInt("categoria")));
+								, jso.getString("testo"), jso.getInt("categoria"), jso.getString("tags")));
 					}
 
 					JSONArray jsa_cats = jso_response.getJSONArray("cats");
@@ -73,7 +73,7 @@ public class CoopTDMApplication extends Application {
 	public List<News> getNewsList(Integer idCategoria) {
 		news.clear();
 		news.addAll(newsTot);
-		if (idCategoria != null) {
+		if (idCategoria != null && idCategoria != 0) {
 			for (Iterator<News> i = news.iterator(); i.hasNext();) {
 				News singolaNews = i.next();
 				if (singolaNews.getCategoria() != idCategoria) {

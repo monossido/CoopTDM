@@ -7,105 +7,58 @@
 
     <LinearLayout
         android:id="@+id/collapsed_view"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/img_header"
-        android:background="@android:color/white"
-        android:weightSum="3" >
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/orari"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/orario"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        <TabHost
+            android:id="@+id/distributionTabhost"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/prezzi"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/costi"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" />
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000" />
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:visibility="gone" >
 
-        <TextView
-            android:id="@+id/luogo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/dove"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/orari2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center" />
 
-    <LinearLayout
-        android:id="@+id/expanded_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/collapsed_view"
-        android:background="@android:color/white"
-        android:visibility="gone"
-        android:weightSum="3" >
+                    <TextView
+                        android:id="@+id/prezzi2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center" />
 
-        <TextView
-            android:id="@+id/orari2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000" />
-
-        <TextView
-            android:id="@+id/prezzi2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000" />
-
-        <TextView
-            android:id="@+id/luogo2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center" />
+                    <TextView
+                        android:id="@+id/luogo2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center" />
+                </FrameLayout>
+            </LinearLayout>
+        </TabHost>
     </LinearLayout>
 
     <View
         android:id="@+id/end_table"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/expanded_view"
+        android:layout_below="@+id/collapsed_view"
         android:background="#000" />
 
     <TextView

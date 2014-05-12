@@ -9,8 +9,9 @@ public class News {
 	private String testo;
 	private int categoria;
 	private Integer id;
+	private String[] tags;
 
-	public News(Integer id, String titolo, String data, String ora, String luogo, String testo, int categoria) {
+	public News(Integer id, String titolo, String data, String ora, String luogo, String testo, int categoria, String tags) {
 		this.id = id;
 		this.titolo = titolo;
 		this.data = data;
@@ -18,6 +19,7 @@ public class News {
 		this.luogo = luogo;
 		this.testo = testo;
 		this.categoria = categoria;
+		this.tags = tags.split(",");
 	}
 
 	public int getId() {
@@ -46,5 +48,9 @@ public class News {
 
 	public String getLuogo() {
 		return luogo;
+	}
+
+	public String[] getTags() {
+		return tags;
 	}
 }

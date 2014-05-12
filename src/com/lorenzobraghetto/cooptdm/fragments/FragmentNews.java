@@ -3,7 +3,6 @@ package com.lorenzobraghetto.cooptdm.fragments;
 import java.util.List;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,33 +35,29 @@ public class FragmentNews extends SherlockFragment implements OnNavigationListen
 		activity = getSherlockActivity();
 		listView = (ListView) view.findViewById(R.id.news_list);
 
-		if (getArguments().getBoolean("categories")) {
-			activity.setTheme(R.style.Theme_Sherlock_Light_DarkActionBar);
+		activity.setTheme(R.style.Theme_Sherlock_Light_DarkActionBar);
 
-			ActionBar actionBar = activity.getSupportActionBar();
+		ActionBar actionBar = activity.getSupportActionBar();
 
-			cats = ((CoopTDMApplication) getActivity().getApplication())
-					.getCats();
+		cats = ((CoopTDMApplication) getActivity().getApplication())
+				.getCats();
 
-			String[] categories = new String[cats.size()];
-
-			for (int i = 0; i < cats.size(); i++) {
-				categories[i] = cats.get(i).getTitolo();
-			}
-
-			ArrayAdapter<CharSequence> list = new ArrayAdapter<CharSequence>(getActivity(), R.layout.sherlock_spinner_item_mio, categories);
-
-			list.setDropDownViewResource(R.layout.sherlock_spinner_dropdown_item_mio);
-
-			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-			actionBar.setListNavigationCallbacks(list, this);
-
-			news = ((CoopTDMApplication) getActivity().getApplication())
-					.getNewsList(actionBar.getSelectedNavigationIndex() + 1);
-		} else {
-			news = ((CoopTDMApplication) getActivity().getApplication())
-					.getNewsList(null);
+		String[] categories = new String[cats.size() + 1];
+		categories[0] = "Tutte";
+		for (int i = 0; i < cats.size(); i++) {
+			categories[i + 1] = cats.get(i).getTitolo();
 		}
+
+		ArrayAdapter<CharSequence> list = new ArrayAdapter<CharSequence>(getActivity(), R.layout.sherlock_spinner_item_mio, categories);
+
+		list.setDropDownViewResource(R.layout.sherlock_spinner_dropdown_item_mio);
+
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+		actionBar.setListNavigationCallbacks(list, this);
+
+		news = ((CoopTDMApplication) getActivity().getApplication())
+				.getNewsList(0);
+
 		listAdapter = new NewsAdapter(getActivity(), news);
 
 		listView.setAdapter(listAdapter);
@@ -73,8 +68,7 @@ public class FragmentNews extends SherlockFragment implements OnNavigationListen
 	@Override
 	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
 		news = ((CoopTDMApplication) getActivity().getApplication())
-				.getNewsList(itemPosition + 1);
-		Log.v("COOPTDM", "from fragment, news size=" + news.size());
+				.getNewsList(itemPosition);
 		listAdapter.notifyDataSetChanged();
 		return true;
 	}

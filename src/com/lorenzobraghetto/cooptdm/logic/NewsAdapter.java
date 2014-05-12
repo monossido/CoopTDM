@@ -4,11 +4,11 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lorenzobraghetto.cooptdm.R;
@@ -38,7 +38,7 @@ public class NewsAdapter extends BaseAdapter {
 
 	@Override
 	public long getItemId(int arg0) {
-		return 0;
+		return mListCard.get(arg0).getId();
 	}
 
 	public static class ViewHolder {
@@ -47,6 +47,7 @@ public class NewsAdapter extends BaseAdapter {
 		public TextView ora;
 		public TextView testo;
 		public TextView luogo;
+		public LinearLayout hscrollview;
 	}
 
 	@Override
@@ -66,6 +67,8 @@ public class NewsAdapter extends BaseAdapter {
 					.findViewById(R.id.oraNews);
 			holder.testo = (TextView) convertView
 					.findViewById(R.id.testoNews);
+			holder.hscrollview = (LinearLayout) convertView
+					.findViewById(R.id.hscrollview);
 
 			convertView.setTag(holder);
 		} else {
@@ -77,7 +80,7 @@ public class NewsAdapter extends BaseAdapter {
 		int category_int = mListCard.get(arg0).getCategoria();
 		Integer category_color = ((CoopTDMApplication) context.getApplication()).getCategoryColor(category_int);
 		holder.txtView.setTextColor(category_color);
-		Log.v("COOPTDM", "category_color=" + category_color);
+
 		String luogo = mListCard.get(arg0).getLuogo();
 		if (luogo.length() > 0)
 			holder.luogo.setText(luogo);
@@ -90,6 +93,17 @@ public class NewsAdapter extends BaseAdapter {
 			holder.ora.setText(ora);
 		else
 			holder.ora.setVisibility(View.GONE);
+
+		String[] tags = mListCard.get(arg0).getTags();
+
+		holder.hscrollview.removeAllViews();
+
+		for (int i = 0; i < tags.length; i++) {
+			LinearLayout linear_tv = (LinearLayout) mInflater.inflate(R.layout.tags_layout, null);
+			TextView tv = (TextView) linear_tv.findViewById(R.id.tag);
+			tv.setText(tags[i]);
+			holder.hscrollview.addView(linear_tv);
+		}
 
 		return convertView;
 	}
