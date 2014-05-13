@@ -10,8 +10,9 @@ public class News {
 	private int categoria;
 	private Integer id;
 	private String[] tags;
+	private String dataPubblicazione;
 
-	public News(Integer id, String titolo, String data, String ora, String luogo, String testo, int categoria, String tags) {
+	public News(Integer id, String titolo, String data, String ora, String luogo, String testo, int categoria, String tags, String dataPubblicazione) {
 		this.id = id;
 		this.titolo = titolo;
 		this.data = data;
@@ -20,6 +21,7 @@ public class News {
 		this.testo = testo;
 		this.categoria = categoria;
 		this.tags = tags.split(",");
+		this.dataPubblicazione = dataPubblicazione;
 	}
 
 	public int getId() {
@@ -52,5 +54,9 @@ public class News {
 
 	public String[] getTags() {
 		return tags;
+	}
+
+	public String getDataPubblicazione() {
+		return dataPubblicazione;
 	}
 }

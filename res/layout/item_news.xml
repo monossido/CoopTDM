@@ -13,64 +13,49 @@
         <RelativeLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp" >
 
             <TextView
                 android:id="@+id/titoloNews"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="2dp"
                 android:layout_marginTop="5dp"
-                android:layout_toLeftOf="@+id/dataPubblicazioneNews"
+                android:layout_toLeftOf="@+id/expandImg"
                 android:textColor="#a2c2a1"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/luogoNews"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/titoloNews"
-                android:layout_marginLeft="5dp"
-                android:layout_toLeftOf="@+id/dataPubblicazioneNews"
-                android:textColor="#0071bc"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/dataPubblicazioneNews"
+            <ImageView
+                android:id="@+id/expandImg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="5dp"
                 android:maxWidth="70dp"
-                android:textColor="#a0a0a0"
-                android:textSize="13sp" />
+                android:src="@drawable/navigation_expand" />
 
             <TextView
-                android:id="@+id/oraNews"
+                android:id="@+id/dataPubblicazioneNews"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/dataPubblicazioneNews"
-                android:layout_below="@+id/dataPubblicazioneNews"
-                android:layout_marginRight="5dp"
+                android:layout_below="@+id/titoloNews"
                 android:textColor="#a0a0a0"
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/dataNews"
+                android:id="@+id/luogoNews"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/luogoNews"
-                android:layout_marginLeft="5dp"
-                android:layout_toLeftOf="@+id/dataPubblicazioneNews"
-                android:textColor="#a0a0a0"
-                android:textSize="13sp" />
+                android:layout_below="@+id/dataPubblicazioneNews"
+                android:layout_toLeftOf="@+id/expandImg"
+                android:textColor="#0071bc"
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </RelativeLayout>
 
         <TextView
@@ -81,12 +66,34 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="5dp"
             android:autoLink="web|email|phone"
+            android:textSize="15sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/testoNews"
+            android:layout_marginLeft="5dp"
             android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/oraNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/data"
+            android:layout_below="@+id/data"
+            android:textSize="13sp" />
 
         <HorizontalScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/testoNews"
+            android:layout_below="@+id/oraNews"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="8dp"
             android:scrollbars="none" >
 
             <LinearLayout

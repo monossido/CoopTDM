@@ -3,6 +3,8 @@
 
     <string name="app_name">Cooperativa Terra Di Mezzo</string>
     <string name="action_settings">Settings</string>
+    <string name="facebook_settings">Facebook</string>
+    <string name="twitter_settings">Twitter</string>
     <string name="hello_world">Hello world!</string>
     <string name="open_drawer">OpenDrawer</string>
     <string name="close_drawer">closenDrawer</string>
@@ -10,7 +12,8 @@
     <string name="notification_text">Clicca per aprire l\'app</string>
     <string name="orario">Orario</string>
     <string name="costi">Costi</string>
-    <string name="dove">Dove</string>
+    <string name="dove">Contatti</string>
+    <string name="pubblicato">pubblicato</string>
 
     <!-- pref -->
     <string name="pref_notification">Notifiche</string>
@@ -39,10 +42,90 @@ Tel. 338.5360848\n
 Tel. 049.9131781\n</string>
     <string name="parco_fiorine_presentazione">
 <![CDATA[<h2>Presentazione</h2>Finalmente un parco con percorsi acrobatici all\'interno del Parco Regionale dei Colli Euganei, situato presso il «Passo Fiorine» a Teolo. Un luogo di svago e socializzazione, nato per soddisfare la propria sete di avventura, voglia di sperimentarsi e soprattutto per essere più a contatto con la natura.
-\n\n
+<br><br>
 Un sano divertimento ricreativo, che permette agli utenti di sperimentare le proprie qualità fisiche, camminando attraverso percorsi elevati più o meno difficili e vivendo nuovi momenti ricchi di emozione.
+<br><br>
+L\'ingresso al parco è libero, si paga solamente per accedere ai percorsi acrobatici.<br>
+<h2>Lo STAFF</h2>
+Guidati e coordinati dalla cooperativa Terra di Mezzo, uno staff di ragazzi giovani, uniti dalla passione per la natura e per il proprio territorio, nella convinzione che queste possano passare ed essere trasmesse anche mediante attività che siano nel contempo compatibili con l\'ambiente e piacevoli per i fruitori.
+<br><br>
+Un gruppo di persone attrezzate e preparate che vi aspettano per farvi vivere in sicurezza le piacevole emozioni dei percorsi acrobatici.
+L\'ingresso al parco è libero, si paga solamente per accedere ai percorsi acrobatici.
+<br>
+<h2>Abbigliamento</h2>
+Si raccomanda l\'uso di abbigliamento sportivo, consigliamo una T-SHIRT con pantaloni lunghi, scarpe da ginnastica o da trekking. Per affrontare i percorsi in maniera più confortevole: una bandana da usare come sottocasco e guanti da palestra, che eventualmente potete acquistare anche al Parco Avventura Le Fiorine. ]]>
+    </string>
+    <string name="zeleghe_orario"><b>dal 5 Aprile al 02 Giugno 2014</b>\n
+Sabato dalle 15.00 alle 19.30 (ultimo briefing ore 18.30)\n
+Domenica dalle 10.00 alle 19.30 (ultimo briefing ore 18.30)\n\n<b>dal 7 Giugno al 7 Settembre 2014</b>\n
+Sabato e Domenica dalle 10.00 alle 20.00 (ultimo briefing ore 19.00)\n
+dal Lunedì al Venerdì dalle 15.30 alle 20.00 (ultimo briefing ore 19.00)\n\n<b>dal 8 Settembre al 28 Settembre 2014</b>\n
+Sabato dalle 15.00 alle 19.00 (ultimo briefing ore 18.00)\n
+Domenica dalle 10.00 alle 19.00 (ultimo briefing ore 18.00)</string>
+    <string name="zeleghe_costi">percorso verde 5€\n
+        (obbligatorio) area briefing 5€\n
+        percorso blu 5€\n
+        percorso rosso 8€\n
+        persorso nero 8€\n</string>
+    <string name="zeleghe_dove">Via Armistizio, 298 \n
+Cesuna di Roana (VI)\n
+Tel. 0424.67515\n
+Tel. 349.4743227\n
 \n\n
-L\'ingresso al parco è libero, si paga solamente per accedere ai percorsi acrobatici.]]>
+info@zeleghe.it</string>
+    <string name="zeleghe_presentazione">
+<![CDATA[<h2>Presentazione</h2><em>"Le Zeleghe sono piccole fatine tessitrici di magnifiche tele; 
+nei boschi di notte cantavano dolci canzoni malinconiche,
+di giorno aiutavano i contadini e i legnaioli con i loro consigli..."</em><br><br>
+A pochi minuti dal centro di Cesuna, in via Armistizio 294, ZELEGHE si trova nel cuore dell\'Altopiano di Asiago, che offre paesaggi incantati e magici. L\'edificio, di proprietà del Comune di Sant\'Urbano (PADOVA), è una struttura che può accogliere un centinaio di persone, adatta a diverse soluzioni.<br><br>
+Un luogo pensato come centro di educazione ambientale immerso nella tranquillità dei boschi, in corrispondenza con la partenza della pista di sci da fondo di Cesuna e a pochi passi dalla vecchia stazione ferroviaria, punto d\'avvio di numerose escursioni a piedi e in mountain bike. Posizione strategica per chi vuole assaporare tutta la tranquillità della montagna, senza però rinunciare alla possibilità di scoprire luoghi e percorsi suggestivi.<br><br>
+
+Organizzata in 3 piani (più un seminterrato), perfettamente adatti ad accogliere anche persone diversamente abili, la struttura offre 80 posti letto, divisi in 22 camere da 2 a 8 letti, una grande cucina completamente attrezzata, una sala da pranzo capiente con due terrazze che si affacciano al paesaggio montano, una sala conferenze, una stanza per giocare, un laboratorio didattico, un bar, nonché uno spogliatoio, comodo per lasciare le attrezzature da montagna. Luminosa d\'estate e calda e protettiva d\'inverno, è la soluzione ideale per diversi tipi di soggiorno e di esigenze. ]]>
+    </string>
+    <string name="musei_orario"><b>dal 5 Aprile al 02 Giugno 2014</b>\n
+Sabato dalle 15.00 alle 19.30 (ultimo briefing ore 18.30)\n
+Domenica dalle 10.00 alle 19.30 (ultimo briefing ore 18.30)\n\n<b>dal 7 Giugno al 7 Settembre 2014</b>\n
+Sabato e Domenica dalle 10.00 alle 20.00 (ultimo briefing ore 19.00)\n
+dal Lunedì al Venerdì dalle 15.30 alle 20.00 (ultimo briefing ore 19.00)\n\n<b>dal 8 Settembre al 28 Settembre 2014</b>\n
+Sabato dalle 15.00 alle 19.00 (ultimo briefing ore 18.00)\n
+Domenica dalle 10.00 alle 19.00 (ultimo briefing ore 18.00)</string>
+    <string name="musei_costi">percorso verde 5€\n
+        (obbligatorio) area briefing 5€\n
+        percorso blu 5€\n
+        percorso rosso 8€\n
+        persorso nero 8€\n</string>
+    <string name="musei_dove">località Passo Fiorine \n
+MUSEI COLLI EUGANEI
+SEGRETERIA: da lun. a ven. dalle 9.00 alle 16.00 - sab. dalle 9.00 alle 12.00
+Tel. +39.049.5738910 - Fax +39.049.9139183 - info@museicollieuganei.it</string>
+    <string name="musei_presentazione">
+<![CDATA[<h2>Presentazione</h2>A pochi passi dalle città di Padova, Vicenza e Rovigo, incorniciati dal panorama dei Colli Euganei, si trovano tre Musei della Provincia di Padova.<br><br>
+I tre Musei sono gestiti dalle Coop. Terra di Mezzo ed Ecofficina che propongono attività didattiche e di divulgazione scientifica nel territorio, finalizzate all’educazione delle giovani generazioni, alla valorizzazione del patrimonio culturale e ambientale, allo sviluppo della socialità.
+    <h2>Cava Bomba</h2>
+    Visitando Cava Bomba si ha l\'impressione di fare un tuffo nel passato, ripercorrendo un cammino lungo la storia del nostro pianeta: dalla sua formazione all\'evoluzione degli esseri viventi che vi hanno abitato.<br><br>Cava Bomba offre la possibilità di avventurarsi nell\'intrigante mondo della geologia, dalle rocce ai minerali più vari. Una ricca collezione di fossili, provenienti dal luogo e da tutto il mondo, permetterà di fare la conoscenza di animali straordinari già estinti, come anche la riproduzione a grandezza naturale di tre dinosauri presenti all’interno del parco geologico.<br><br>L’edificio della vecchia fornace, invece, ci riporta in un contesto di archeologia industriale permettendo così di conoscere una parte di storia ben più recente e radicata al territorio: il lavoro del cavatore e la lavorazione della calce. Infine, il luogo è inserito in un contesto naturale, i Colli Euganei, che permette di spaziare nel verde oltre confine.
+    <h2>Castello di San martino</h2>Chi non ha mai sognato di ritrovarsi nel bel mezzo di un\'avventura straordinaria, alla ricerca di un preziosissimo tesoro o di un manufatto la cui scoperta avrebbe fatto cambiare la concezione della storia dell’uomo? L’Archeologia è affascinante proprio perché è la scienza del nostro passato ed è uno dei tasselli che ci permettono di ricostruire e conoscere la nostra storia.<br><br>Chi viene in visita al Museo Archeologico del fiume Bacchiglione scoprirà le sue collezioni, testimonianza delle popolazioni che dalla preistoria al medioevo hanno abitato la piana alluvionale creata dal fiume, ma potrà anche allargare lo sguardo al contesto in cui il Museo è inserito e al paesaggio in cui si colloca: il fiume Bacchiglione che scorre da tempi antichi, l’edificio del Castello sorto lungo l’argine, in posizione strategica per il controllo dei traffici fluviali e il parco del castello, area verde privilegiata per osservare la natura e le sponde del fiume.
+    <h2>Villa Beatrice</h2>Villa Beatrice d\'Este, situata sulla sommità del Monte Gemola, nella porzione centrale del comprensorio euganeo, è un luogo che offre panorami stupendi e di grandi suggestioni.<br><br>La sua origine monastica, il successivo rifacimento in villa e l’uso agricolo del terreno annesso offrono la possibilità di rivivere importanti periodi storici che caratterizzano non solo il museo ma anche tutto il territorio euganeo e di scoprire e rievocare le tradizioni del passato.<br><br>All\'interno della Villa è ospitata una ricca collezione di flora e fauna tipiche dell’area collinare euganea che offre lo spunto per conoscere gli aspetti naturalistici del territorio in cui l’edificio è inserito e di creare una serie di percorsi didattici in tema ambientale.
+    
+    ]]>
+    </string>
+    <string name="hostel_orario">Orario di reception\n
+dalle 08.00 alle 13.00\n
+dalle 17.00 alle 22.00</string>
+    <string name="hostel_costi">Camera singola: 35,00 euro a notte\n
+Camera doppia: 50,00 euro a notte\n
+Camera tripla: 70,00 euro a notte\n
+Camera quadrupla: 85,00 euro a notte\n
+Camera multipla: (prezzo a persona) 20,00 euro a notte\n
+Supplemento colazione: 4,00 euro a notte</string>
+    <string name="hostel_dove">Via Santo Stefano, 33\n
+35043 Monselice (Padova) Italy\n
+Tel. +39 0429 783125\n
+Fax +39 0429 701706\n
+E-Mail info@venetianhostel.it</string>
+    <string name="hostel_presentazione">
+<![CDATA[<h2>Presentazione</h2>L\'ostello è situato nel cuore della città di Monselice, in un edificio cinquecentesco realizzato dalla famiglia patrizia dei Tassello ed ora proprietà del Comune di Monselice. Restituito all\'antica bellezza da un recente restauro, dispone di 90 posti letto ed è arredato con qualità.
+    <h2>Ambienti</h2>L\'ostello è situato nel cuore della città di Monselice, in un edificio cinquecentesco realizzato dalla famiglia patrizia dei Tassello ed ora proprietà del Comune di Monselice. Restituito all\'antica bellezza da un recente restauro, dispone di 90 posti letto ed è arredato con qualità.
+    <h2>Convegni</h2>Sono inoltre a disposizione alcune sale di rappresentanza e un salone per convegni.]]>
     </string>
 
 </resources>

@@ -21,7 +21,7 @@ public class StruttureActivity extends MainActivity {
 		manager.beginTransaction()
 				.replace(R.id.content_frame, strutturaFragment).commit();
 
-		int padding_in_dp = 40;
+		int padding_in_dp = 50;
 		final float scale = getResources().getDisplayMetrics().density;
 		int padding_in_px = (int) (padding_in_dp * scale + 0.5f);
 		drawerList.setPadding(0, padding_in_px, 0, 0);

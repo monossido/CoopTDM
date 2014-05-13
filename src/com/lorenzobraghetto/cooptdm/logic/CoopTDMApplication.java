@@ -45,7 +45,7 @@ public class CoopTDMApplication extends Application {
 
 						news.add(new News(jso.getInt("id"), jso.getString("titolo"), jso.getString("data")
 								, jso.getString("ora"), jso.getString("luogo")
-								, jso.getString("testo"), jso.getInt("categoria"), jso.getString("tags")));
+								, jso.getString("testo"), jso.getInt("categoria"), jso.getString("tags"), jso.getString("dataPubblicazione")));
 					}
 
 					JSONArray jsa_cats = jso_response.getJSONArray("cats");
@@ -112,4 +112,5 @@ public class CoopTDMApplication extends Application {
 		if (colors.size() < amount)
 			colors.add(Color.parseColor("#000000"));
 	}
+
 }
