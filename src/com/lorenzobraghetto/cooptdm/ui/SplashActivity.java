@@ -41,6 +41,7 @@ public class SplashActivity extends Activity {
 		if (checkPlayServices()) {
 			gcm = GoogleCloudMessaging.getInstance(this);
 			regid = getRegistrationId(this);
+			Log.v("COOPTDM", "regid=" + regid);
 
 			if (regid.isEmpty()) {
 				registerInBackground();
@@ -106,8 +107,6 @@ public class SplashActivity extends Activity {
 					msg = "Device registered, registration ID=" + regid;
 
 					sendRegistrationIdToBackend();
-
-					storeRegistrationId(SplashActivity.this, regid);
 				} catch (IOException ex) {
 					msg = "Error :" + ex.getMessage();
 
@@ -137,12 +136,14 @@ public class SplashActivity extends Activity {
 		params.put("email", possibleEmail);
 		params.put("android_version", Build.VERSION.SDK_INT + "");
 		params.put("app_version", getAppVersion(this) + "");
-		params.put("api_key", CoopTDMParams.API_KEY);
+		params.put("api_key", CoopTDMParams.API_KEY_MIO);
 		client.post(CoopTDMParams.BASE_URL + "api/register.php", params, new AsyncHttpResponseHandler() {
 
 			public void onSuccess(String response) {
 				Log.v("COOPTDM", "response=" + response);
+				storeRegistrationId(SplashActivity.this, regid);
 			}
+
 		});
 
 	}

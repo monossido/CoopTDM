@@ -1,54 +1,38 @@
 package com.lorenzobraghetto.cooptdm;
 
-import com.lorenzobraghetto.cooptdm.ui.SplashActivity;
-
 import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.media.RingtoneManager;
-import android.support.v4.app.NotificationCompat;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 import android.support.v4.content.WakefulBroadcastReceiver;
-import android.util.Log;
 
 public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 
 	@Override
-	public void onReceive(Context context, Intent intent) {
-		Log.v("ATOOMA", "onReceive, intent=" + intent.getExtras().getString("message_type"));
-
+	public void onReceive(Context context, Intent intent) { //TODO espandibili
 		if (intent.getExtras().getString("message_type").equals("news")) {
-			NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-			Intent app = new Intent(context, SplashActivity.class);
-			PendingIntent pintent = PendingIntent.getActivity(context, 0, app, PendingIntent.FLAG_UPDATE_CURRENT);
+			Notification noti = NotificationFactory.buildNotification(context, context.getString(R.string.notification_title)
+					, context.getString(R.string.notification_text), null);
 
-			Notification noti = new NotificationCompat.Builder(context)
-					.setContentTitle(context.getString(R.string.notification_title))
-					.setContentText(context.getString(R.string.notification_text))
-					.setSmallIcon(R.drawable.ic_launcher)
-					.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-					.setContentIntent(pintent)
-					.setAutoCancel(true).build();
-
-			notificationManager.notify(123456, noti);
+			NotificationFactory.showNotification(context, noti, NotificationFactory.NOTIFICATION_ID_NEWS);
 		} else if (intent.getExtras().getString("message_type").equals("notification")) {
 			String title = intent.getExtras().getString("title");
 			String message = intent.getExtras().getString("message");
 
-			NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-			Intent app = new Intent(context, SplashActivity.class);
-			PendingIntent pintent = PendingIntent.getActivity(context, 0, app, PendingIntent.FLAG_UPDATE_CURRENT);
+			Notification noti = NotificationFactory.buildNotification(context, title
+					, message, null);
 
-			Notification noti = new NotificationCompat.Builder(context)
-					.setContentTitle(title)
-					.setContentText(message)
-					.setSmallIcon(R.drawable.ic_launcher)
-					.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-					.setContentIntent(pintent)
-					.setAutoCancel(true).build();
+			NotificationFactory.showNotification(context, noti, NotificationFactory.NOTIFICATION_ID_NOTIFICATION);
+		} else if (intent.getExtras().getString("message_type").equals("cron")) {
+			boolean status = intent.getExtras().getBoolean("status");
 
-			notificationManager.notify(123456, noti);
+			SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+			Editor edit = sp.edit();
+
+			edit.putBoolean("cron", status);
+			edit.commit();
 		}
 	}
 

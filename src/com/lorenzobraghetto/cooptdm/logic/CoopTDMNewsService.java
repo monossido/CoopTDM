@@ -5,29 +5,26 @@ import org.json.JSONObject;
 
 import android.app.AlarmManager;
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.media.RingtoneManager;
 import android.os.IBinder;
 import android.os.SystemClock;
-import android.support.v4.app.NotificationCompat;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.lorenzobraghetto.cooptdm.CoopTDMParams;
+import com.lorenzobraghetto.cooptdm.NotificationFactory;
 import com.lorenzobraghetto.cooptdm.R;
-import com.lorenzobraghetto.cooptdm.ui.SplashActivity;
 
 public class CoopTDMNewsService extends Service {
 
 	private boolean started = false;
 
 	@Override
-	public void onCreate() {
+	public void onCreate() { //Per ora rimane, da verificare funzionamento push
 		super.onCreate();
 		if (!started) {
 			String alarm = Context.ALARM_SERVICE;
@@ -54,26 +51,17 @@ public class CoopTDMNewsService extends Service {
 
 		RequestParams params = new RequestParams();
 		params.add("lastNewsId", lastNewsId.toString());
-		params.add("api_key", CoopTDMParams.API_KEY);
+		params.add("api_key", CoopTDMParams.API_KEY_MIO);
 		client.post(CoopTDMParams.BASE_URL + "api/lastNews.php", params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {
 				try {
 					JSONObject result = new JSONObject(response);
 					if (result.getBoolean("result")) {
-						NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-						Intent app = new Intent(CoopTDMNewsService.this, SplashActivity.class);
-						PendingIntent pintent = PendingIntent.getActivity(CoopTDMNewsService.this, 0, app, PendingIntent.FLAG_UPDATE_CURRENT);
+						Notification noti = NotificationFactory.buildNotification(CoopTDMNewsService.this, getString(R.string.notification_title)
+								, getString(R.string.notification_text), null);
 
-						Notification noti = new NotificationCompat.Builder(CoopTDMNewsService.this)
-								.setContentTitle(getString(R.string.notification_title))
-								.setContentText(getString(R.string.notification_text))
-								.setSmallIcon(R.drawable.ic_launcher)
-								.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-								.setContentIntent(pintent)
-								.setAutoCancel(true).build();
-
-						notificationManager.notify(123456, noti);
+						NotificationFactory.showNotification(CoopTDMNewsService.this, noti, NotificationFactory.NOTIFICATION_ID_NEWS);
 					}
 				} catch (JSONException e) {
 					e.printStackTrace();

@@ -14,13 +14,16 @@
     <string name="costi">Costi</string>
     <string name="dove">Contatti</string>
     <string name="pubblicato">pubblicato</string>
-
+    <string name="servizi">Servizi</string>
     <!-- pref -->
     <string name="pref_notification">Notifiche</string>
     <string name="pref_notification_summ">Ricevi notifiche di nuove notizie</string>
     <string name="pref_about_summ">Applicazione sviluppata da Lorenzo Braghetto per Cooperativa Terra di Mezzo - Licenza GPL</string>
     <string name="pref_about">About</string>
-    <string name="pref_about_dialog">Applicazione sviluppata da Lorenzo Braghetto per Cooperativa Terra di Mezzo - Licenza GPL - https://github.com/monossido/CoopTDM</string>
+    <string name="pref_about_dialog"><Data>
+<![CDATA[ Applicazione sviluppata da <b>Lorenzo Braghetto</b> (lorenzobraghetto.com) per <b>Cooperativa Terra di Mezzo</b><br><br>Licenza GPL - https://github.com/monossido/CoopTDM
+        <br><br>Software Open Source utilizzato:-ActionBarSherlock<br><br>Grafica creata da <b>Andrea Marson</b><br><br>versione 1.0]]>
+</Data></string>
 
     <!-- strutture -->
     <string name="parco_fiorine_orario"><b>dal 5 Aprile al 02 Giugno 2014</b>\n
@@ -126,6 +129,43 @@ E-Mail info@venetianhostel.it</string>
 <![CDATA[<h2>Presentazione</h2>L\'ostello è situato nel cuore della città di Monselice, in un edificio cinquecentesco realizzato dalla famiglia patrizia dei Tassello ed ora proprietà del Comune di Monselice. Restituito all\'antica bellezza da un recente restauro, dispone di 90 posti letto ed è arredato con qualità.
     <h2>Ambienti</h2>L\'ostello è situato nel cuore della città di Monselice, in un edificio cinquecentesco realizzato dalla famiglia patrizia dei Tassello ed ora proprietà del Comune di Monselice. Restituito all\'antica bellezza da un recente restauro, dispone di 90 posti letto ed è arredato con qualità.
     <h2>Convegni</h2>Sono inoltre a disposizione alcune sale di rappresentanza e un salone per convegni.]]>
+    </string>
+    <string name="casa_servizi">- Pernotto e prima colazione\n
+- Mezza pensione o completa\n
+- Uso autonomo della cucina\n
+- Parcheggio interno\n
+- Giardino botanico\n
+- Connessione Wi-Fi gratuita\n
+- Escursioni guidate\n
+- Servizio bar e ristoro\n
+- Terrazza panoramica</string>
+    <string name="casa_dove">Via Sottovenda, 3 - 35030 Galzignano (PD)\n
+Tel. 049.9131781 - Fax 049.9139183\n
+ostelli@coopterradimezzo.com\n
+casamarina@parcocollieuganei.com</string>
+    <string name="casa_presentazione">
+<![CDATA[<h2>Casa Marina - Centro Educazione Ambientale</h2>
+Nel cuore dei Colli Euganei sul versante orientale del Monte Venda, in una delle aree più belle dal punto di vista paesaggistico, Casa Marina è il centro di educazione ambientale del Parco, calata nell\'ambiente naturale dove è facile entrare immediatamente in sintonia con la natura, la storia e le attività dell\'uomo. È sede di un interessante giardino botanico che dedica un settore alle piante officinali; è anche un ostello dotato di 24 posti letto.
+<b>Casa Marina è a disposizione per iniziative individuali, di associazioni, gruppi con fini culturali o sociali, basta prendere accordi con la segreteria.</b>]]>
+    </string>
+    <string name="ostello_servizi">- Pernotto e prima colazione\n
+- Mezza pensione o completa\n
+- Uso autonomo della cucina\n
+- Parcheggio interno\n
+- Sala conferenze\n
+- Grande giardino recintato\n
+- Connessione Wi-Fi gratuita\n
+- Escursioni guidate\n
+- Noleggio bici\n
+- Impianto audio e video</string>
+    <string name="ostello_dove">Via Donna Daria, 2\n
+35030 Valle San Giorgio - Baone (PD)\n
+Tel. 0429.604286\n
+ostelli@coopterradimezzo.com</string>
+    <string name="ostello_presentazione">
+<![CDATA[<h2>Ostello Colli Euganei</h2>
+Una struttura accogliente, nel comune di Baone, vicino a Monselice, dotata di 50 posti letto distribuiti in alcune camerate e stanze più piccole e riservate; è un luogo ideale per soggiorni scolastici. La vicinanza dell\'Ostello a luoghi di elevato interesse storico e naturalistico ne fanno un importante punto di partenza per escursioni nel Parco e per la visita a svariati centri medievali, quali per esempio Este, Arquà Petrarca, Monselice e Montagnana.
+<b>Ostello Colli Euganei è a disposizione per iniziative individuali, di associazioni, gruppi con fini culturali o sociali, basta prendere accordi con la segreteria.</b>]]>
     </string>
 
 </resources>

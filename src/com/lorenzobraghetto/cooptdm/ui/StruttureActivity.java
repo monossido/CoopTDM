@@ -30,12 +30,13 @@ public class StruttureActivity extends MainActivity {
 	@Override
 	protected void openFragment(int position) {
 		Intent newsIntent = new Intent(StruttureActivity.this, MainActivity.class);
+		newsIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+		newsIntent.putExtra("fromStrutture", true);
+
 		FragmentStruttura strutturaFragment = new FragmentStruttura();
 		Bundle arguments = new Bundle();
 		switch (position) {
 		case 0:
-			Bundle bundle = new Bundle();
-			newsIntent.putExtras(bundle);
 			finish();
 			startActivity(newsIntent);
 			break;

@@ -2,6 +2,7 @@
 
     <style name="AppTheme" parent="Theme.Sherlock.Light.DarkActionBar">
         <item name="actionBarStyle">@style/Widget.ActionBar</item>
+        <item name="android:windowAnimationStyle">@null</item>
     </style>
 
     <style name="AppTheme.TranslucentActionBar">
@@ -11,6 +12,7 @@
         <item name="windowActionBarOverlay">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
     </style>
 
     <style name="AppTheme.ActionBarStyle" parent="Widget.ActionBar.Transparent">

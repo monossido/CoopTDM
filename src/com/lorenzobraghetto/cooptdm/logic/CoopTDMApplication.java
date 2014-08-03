@@ -31,7 +31,7 @@ public class CoopTDMApplication extends Application {
 		categories.clear();
 		AsyncHttpClient client = new AsyncHttpClient();
 		RequestParams params = new RequestParams();
-		params.put("api_key", CoopTDMParams.API_KEY);
+		params.put("api_key", CoopTDMParams.API_KEY_MIO);
 		client.post(CoopTDMParams.BASE_URL + "api/news.php", params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {

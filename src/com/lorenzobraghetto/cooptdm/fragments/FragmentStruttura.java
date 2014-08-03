@@ -40,7 +40,6 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 	protected boolean expanded = false;
 	private int previousTab;
 	private TabHost mTabHost;
-	private int height;
 	private int int_struttura;
 	public static final String ARG_IMAGE_RES = "image_source";
 	public static final String ARG_ACTION_BG_RES = "image_action_bs_res";
@@ -98,11 +97,17 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 			img_header.setImageResource(R.drawable.strutture_casa_marina_header);
 			getActivity().setTitle(items[6]);
 			getSherlockActivity().getSupportActionBar().setIcon(R.drawable.ico_5);
+			orari.setText(R.string.casa_servizi);
+			luogo.setText(R.string.casa_dove);
+			struttura_content.setText(Html.fromHtml(getString(R.string.casa_presentazione)));
 			break;
 		case STRUTTURA_OSTELLO:
 			img_header.setImageResource(R.drawable.strutture_ostello_colli_euganei_header);
 			getActivity().setTitle(items[7]);
 			getSherlockActivity().getSupportActionBar().setIcon(R.drawable.ico_6);
+			orari.setText(R.string.casa_servizi);
+			luogo.setText(R.string.casa_dove);
+			struttura_content.setText(Html.fromHtml(getString(R.string.casa_presentazione)));
 			break;
 		default:
 			break;
@@ -112,7 +117,11 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 
 		mTabHost = (TabHost) view.findViewById(R.id.distributionTabhost);
 		mTabHost.setup();
-		if (int_struttura != STRUTTURA_ZELEGHE) {
+		if (int_struttura == STRUTTURA_CASA) {
+			mTabHost.addTab(mTabHost.newTabSpec(getString(R.string.servizi)).setIndicator(getString(R.string.servizi)).setContent(R.id.orari2));
+		} else if (int_struttura == STRUTTURA_OSTELLO) {
+			mTabHost.addTab(mTabHost.newTabSpec(getString(R.string.servizi)).setIndicator(getString(R.string.servizi)).setContent(R.id.orari2));
+		} else if (int_struttura != STRUTTURA_ZELEGHE) {
 			mTabHost.addTab(mTabHost.newTabSpec(getString(R.string.orario)).setIndicator(getString(R.string.orario)).setContent(R.id.orari2));
 			mTabHost.addTab(mTabHost.newTabSpec(getString(R.string.costi)).setIndicator(getString(R.string.costi)).setContent(R.id.prezzi2));
 		}

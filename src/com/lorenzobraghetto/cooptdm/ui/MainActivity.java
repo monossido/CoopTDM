@@ -20,7 +20,6 @@ import com.actionbarsherlock.view.MenuItem;
 import com.lorenzobraghetto.cooptdm.R;
 import com.lorenzobraghetto.cooptdm.fragments.FragmentNews;
 import com.lorenzobraghetto.cooptdm.fragments.FragmentStruttura;
-import com.lorenzobraghetto.cooptdm.logic.CoopTDMNewsService;
 import com.lorenzobraghetto.cooptdm.logic.Header;
 import com.lorenzobraghetto.cooptdm.logic.Item;
 import com.lorenzobraghetto.cooptdm.logic.ItemAdapter;
@@ -33,12 +32,16 @@ public class MainActivity extends SherlockFragmentActivity {
 	protected ListView drawerList;
 	private ActionBarDrawerToggle actionBarDrawerToggle;
 	protected FragmentManager manager;
+	private boolean fromStrutture;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		startService(new Intent(this, CoopTDMNewsService.class));
+
+		Bundle extra = getIntent().getExtras();
+		if (extra != null)
+			fromStrutture = extra.getBoolean("fromStrutture", false);
 
 		drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -112,7 +115,8 @@ public class MainActivity extends SherlockFragmentActivity {
 		firstFragment.setArguments(bundle);
 		manager.beginTransaction()
 				.replace(R.id.content_frame, firstFragment).commit();
-		drawer.openDrawer(drawerList);
+		if (!fromStrutture)
+			drawer.openDrawer(drawerList);
 	}
 
 	@Override
@@ -130,6 +134,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	protected void openFragment(int position) {
 		FragmentNews newsFragment = new FragmentNews();
 		Intent struttureIntent = new Intent(MainActivity.this, StruttureActivity.class);
+		struttureIntent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 		Bundle bundle = new Bundle();
 		switch (position) {
 		case 0:
