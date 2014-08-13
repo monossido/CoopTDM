@@ -34,7 +34,7 @@ public class CoopTDMNewsService extends Service {
 			PendingIntent pi = PendingIntent.getService(this, 0, intent, 0);
 
 			int type = AlarmManager.ELAPSED_REALTIME_WAKEUP;
-			long interval = AlarmManager.INTERVAL_HALF_DAY;
+			long interval = AlarmManager.INTERVAL_DAY;
 			//long interval = 1000 * 5;
 			long triggerTime = SystemClock.elapsedRealtime() + interval;
 

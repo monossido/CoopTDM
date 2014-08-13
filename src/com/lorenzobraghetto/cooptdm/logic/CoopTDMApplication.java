@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
+import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -22,7 +23,7 @@ import com.lorenzobraghetto.cooptdm.CoopTDMParams;
 public class CoopTDMApplication extends Application {
 
 	private List<News> news = new ArrayList<News>();
-	private List<News> newsTot;
+	private List<News> newsTot = new ArrayList<News>();
 	private List<Categories> categories = new ArrayList<Categories>();
 	private ArrayList<Integer> colors = new ArrayList<Integer>();
 
@@ -35,6 +36,7 @@ public class CoopTDMApplication extends Application {
 		client.post(CoopTDMParams.BASE_URL + "api/news.php", params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {
+				Log.v("COOPTDM", "response=" + response);
 				JSONObject jso_response = null;
 				try {
 					jso_response = new JSONObject(response);
@@ -66,6 +68,11 @@ public class CoopTDMApplication extends Application {
 				editor.commit();
 				callback.onDownloaded();
 				generateUniqueColors(categories.size());
+			}
+
+			public void onFailure(Throwable error, String content) {
+				newsTot.clear();
+				callback.onDownloaded();
 			}
 		});
 	}

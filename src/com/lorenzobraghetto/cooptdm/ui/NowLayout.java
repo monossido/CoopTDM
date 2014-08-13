@@ -4,10 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
-
-import com.lorenzobraghetto.cooptdm.R;
 
 public class NowLayout extends LinearLayout implements OnGlobalLayoutListener {
 	public NowLayout(Context context, AttributeSet attrs) {
@@ -39,9 +36,9 @@ public class NowLayout extends LinearLayout implements OnGlobalLayoutListener {
 				break;
 			}
 			if (!inversed) {
-				child.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.slide_up_left));
+				//child.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.slide_up_left));
 			} else {
-				child.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.slide_up_right));
+				//child.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.slide_up_right));
 			}
 			inversed = !inversed;
 		}
