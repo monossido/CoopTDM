@@ -32,6 +32,7 @@ public class FragmentNews extends SherlockFragment implements OnNavigationListen
 	private List<Categories> cats;
 	private ScrollView no_connection;
 	private SwipeRefreshLayout view;
+	private int lastCat = 0;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,15 +67,15 @@ public class FragmentNews extends SherlockFragment implements OnNavigationListen
 
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 		actionBar.setListNavigationCallbacks(list, this);
-		getNews();
+		getNews(0);
 		return view;
 	}
 
-	private void getNews() {
+	private void getNews(int cat) {
 		news = ((CoopTDMApplication) getActivity().getApplication())
-				.getNewsList(0);
+				.getNewsList(cat);
 
-		if (news.size() != 0) {
+		if (news.size() != 0 || lastCat != 0) {
 			listAdapter = new NewsAdapter(getActivity(), news);
 			listView.setAdapter(listAdapter);
 			listView.setVisibility(View.VISIBLE);
@@ -87,7 +88,8 @@ public class FragmentNews extends SherlockFragment implements OnNavigationListen
 
 	@Override
 	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-		getNews();
+		lastCat = itemPosition;
+		getNews(itemPosition);
 		return true;
 	}
 
@@ -104,7 +106,7 @@ public class FragmentNews extends SherlockFragment implements OnNavigationListen
 
 					@Override
 					public void onDownloaded() {
-						getNews();
+						getNews(lastCat);
 						view.setRefreshing(false);
 					}
 				});
