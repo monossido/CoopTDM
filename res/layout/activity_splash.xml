@@ -2,7 +2,7 @@
     android:id="@+id/splash_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#a0a0a0" >
+    android:background="@drawable/background" >
 
     <ProgressBar
         android:id="@+id/progress"

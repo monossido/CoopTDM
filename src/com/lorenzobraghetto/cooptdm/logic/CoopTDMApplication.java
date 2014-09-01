@@ -118,6 +118,10 @@ public class CoopTDMApplication extends Application {
 			colors.add(Color.parseColor("#cf9600"));
 		if (colors.size() < amount)
 			colors.add(Color.parseColor("#000000"));
+		if (colors.size() < amount)
+			colors.add(Color.parseColor("#00bcca"));
+		if (colors.size() < amount)
+			colors.add(Color.parseColor("#00beca"));
 	}
 
 }
