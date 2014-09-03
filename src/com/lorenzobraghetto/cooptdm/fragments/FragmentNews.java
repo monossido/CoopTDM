@@ -3,6 +3,8 @@ package com.lorenzobraghetto.cooptdm.fragments;
 import java.util.List;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.view.LayoutInflater;
@@ -33,14 +35,43 @@ public class FragmentNews extends SherlockFragment implements OnNavigationListen
 	private ScrollView no_connection;
 	private SwipeRefreshLayout view;
 	private int lastCat = 0;
+	private ActionBar actionBar;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		view = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_news, container, false);
-
+		getNews(0);
 		activity = getSherlockActivity();
-		listView = (ListView) view.findViewById(R.id.news_list);
-		no_connection = (ScrollView) view.findViewById(R.id.no_connection);
+		actionBar = activity.getSupportActionBar();
+
+		if (news.size() != 0 || lastCat != 0) {
+			view = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_news, container, false);
+			listView = (ListView) view.findViewById(R.id.news_list);
+
+			listAdapter = new NewsAdapter(getActivity(), news);
+			listView.setAdapter(listAdapter);
+			listView.setVisibility(View.VISIBLE);
+
+			cats = ((CoopTDMApplication) getActivity().getApplication())
+					.getCats();
+
+			String[] categories = new String[cats.size() + 1];
+			categories[0] = "Tutte";
+			for (int i = 0; i < cats.size(); i++) {
+				categories[i + 1] = cats.get(i).getTitolo();
+			}
+
+			ArrayAdapter<CharSequence> list = new ArrayAdapter<CharSequence>(getActivity(), R.layout.sherlock_spinner_item_mio, categories);
+
+			list.setDropDownViewResource(R.layout.sherlock_spinner_dropdown_item_mio);
+
+			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+			actionBar.setListNavigationCallbacks(list, this);
+			actionBar.setSelectedNavigationItem(lastCat);
+		} else {
+			view = (SwipeRefreshLayout) inflater.inflate(R.layout.fragment_no_news, container, false);
+			no_connection = (ScrollView) view.findViewById(R.id.no_connection);
+			no_connection.setVisibility(View.VISIBLE);
+		}
 
 		view.setOnRefreshListener(this);
 		view.setColorScheme(R.color.holo_blue_bright,
@@ -49,47 +80,20 @@ public class FragmentNews extends SherlockFragment implements OnNavigationListen
 				R.color.holo_red_light);
 
 		activity.setTheme(R.style.Theme_Sherlock_Light_DarkActionBar);
-
-		ActionBar actionBar = activity.getSupportActionBar();
-
-		cats = ((CoopTDMApplication) getActivity().getApplication())
-				.getCats();
-
-		String[] categories = new String[cats.size() + 1];
-		categories[0] = "Tutte";
-		for (int i = 0; i < cats.size(); i++) {
-			categories[i + 1] = cats.get(i).getTitolo();
-		}
-
-		ArrayAdapter<CharSequence> list = new ArrayAdapter<CharSequence>(getActivity(), R.layout.sherlock_spinner_item_mio, categories);
-
-		list.setDropDownViewResource(R.layout.sherlock_spinner_dropdown_item_mio);
-
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-		actionBar.setListNavigationCallbacks(list, this);
-		getNews(0);
 		return view;
 	}
 
 	private void getNews(int cat) {
 		news = ((CoopTDMApplication) getActivity().getApplication())
 				.getNewsList(cat);
-
-		if (news.size() != 0 || lastCat != 0) {
-			listAdapter = new NewsAdapter(getActivity(), news);
-			listView.setAdapter(listAdapter);
-			listView.setVisibility(View.VISIBLE);
-			no_connection.setVisibility(View.GONE);
-		} else {
-			listView.setVisibility(View.GONE);
-			no_connection.setVisibility(View.VISIBLE);
-		}
 	}
 
 	@Override
 	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
 		lastCat = itemPosition;
 		getNews(itemPosition);
+		listAdapter = new NewsAdapter(getActivity(), news);
+		listView.setAdapter(listAdapter);
 		return true;
 	}
 
@@ -108,8 +112,26 @@ public class FragmentNews extends SherlockFragment implements OnNavigationListen
 					public void onDownloaded() {
 						getNews(lastCat);
 						view.setRefreshing(false);
+						(new Thread() {
+							public void run() {
+								try {
+									sleep(500);
+									reloadFragment();
+								} catch (InterruptedException e) {
+									e.printStackTrace();
+								}
+							}
+						}).start();
 					}
 				});
 
+	}
+
+	private void reloadFragment() {
+		Fragment frg = this;
+		final FragmentTransaction ft = getFragmentManager().beginTransaction();
+		ft.detach(frg);
+		ft.attach(frg);
+		ft.commit();
 	}
 }

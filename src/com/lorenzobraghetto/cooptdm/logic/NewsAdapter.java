@@ -2,25 +2,20 @@ package com.lorenzobraghetto.cooptdm.logic;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -33,14 +28,16 @@ public class NewsAdapter extends BaseAdapter {
 	private List<News> mListCard;
 	private LayoutInflater mInflater;
 	private Activity context;
-	private Map<String, Integer> mListColorsTag = new HashMap<String, Integer>();
-	private Map<Integer, Integer> mListHeightNews = new HashMap<Integer, Integer>();
+	private List<Integer> mListColorsTag = new ArrayList<Integer>();
 
 	public NewsAdapter(Activity context, List<News> listCard) {
 		this.context = context;
 		this.mListCard = listCard;
 		mInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+		mListColorsTag.add(Color.rgb(136, 136, 136));
+		mListColorsTag.add(Color.rgb(0, 0, 0));
 	}
 
 	@Override
@@ -141,40 +138,13 @@ public class NewsAdapter extends BaseAdapter {
 			LinearLayout linear_tv = (LinearLayout) mInflater.inflate(R.layout.tags_layout, null);
 			TextView tv = (TextView) linear_tv.findViewById(R.id.tag);
 			tv.setText(tags[i]);
+			tv.setTextColor(Color.WHITE);
 			if (i == 0)
 				tv.setBackgroundColor(category_color);
 			else
-				tv.setBackgroundColor(generateColor(tags[i]));
+				tv.setBackgroundColor(generateColor(i - 1));
 			holder.hscrollview.addView(linear_tv);
 		}
-
-		ViewTreeObserver vto = holder.testo.getViewTreeObserver();
-		vto.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
-
-			@SuppressLint("NewApi")
-			@Override
-			public void onGlobalLayout() {
-
-				if (mListHeightNews.get(mListCard.get(arg0).getId()) == null) {
-					mListHeightNews.put(mListCard.get(arg0).getId(), holder.testo.getHeight());
-				}
-
-				//DropDownAnim anim = new DropDownAnim(holder.testo, holder.testo.getHeight(), false);
-				//anim.setDuration(0);
-				//holder.testo.startAnimation(anim);
-
-				holder.testo.setVisibility(View.GONE);
-
-				ViewTreeObserver obs = holder.testo.getViewTreeObserver();
-
-				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-					obs.removeOnGlobalLayoutListener(this);
-				} else {
-					obs.removeGlobalOnLayoutListener(this);
-				}
-			}
-
-		});
 
 		holder.expandImage.setOnClickListener(new OnClickListener() {
 
@@ -182,10 +152,6 @@ public class NewsAdapter extends BaseAdapter {
 
 			@Override
 			public void onClick(View v) {
-
-				//DropDownAnim anim = new DropDownAnim(holder.testo, mListHeightNews.get(mListCard.get(arg0).getId()), !expanded);
-				//anim.setDuration((int) (mListHeightNews.get(mListCard.get(arg0).getId()) / v.getContext().getResources().getDisplayMetrics().density));
-				//holder.testo.startAnimation(anim);
 
 				if (!expanded) {
 					holder.expandImage.setImageResource(R.drawable.navigation_collapse);
@@ -201,8 +167,8 @@ public class NewsAdapter extends BaseAdapter {
 		return convertView;
 	}
 
-	private Integer generateColor(String tag) {
-		if (mListColorsTag.get(tag) == null) {
+	private Integer generateColor(int position) {
+		if (mListColorsTag.size() <= position) {
 			Random rand = new Random();
 
 			int red = rand.nextInt();
@@ -210,10 +176,10 @@ public class NewsAdapter extends BaseAdapter {
 			int blue = rand.nextInt();
 
 			Integer color = Color.rgb(red, green, blue);
-			mListColorsTag.put(tag, color);
+			mListColorsTag.add(color);
 			return color;
 		} else {
-			return mListColorsTag.get(tag);
+			return mListColorsTag.get(position);
 		}
 	}
 }
