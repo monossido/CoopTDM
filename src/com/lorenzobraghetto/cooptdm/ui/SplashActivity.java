@@ -144,6 +144,10 @@ public class SplashActivity extends Activity {
 				storeRegistrationId(SplashActivity.this, regid);
 			}
 
+			@Override
+			public void onFailure(Throwable error, String content) {
+				Log.v("COOPTDM", "error=" + error + " content=" + content);
+			}
 		});
 
 	}

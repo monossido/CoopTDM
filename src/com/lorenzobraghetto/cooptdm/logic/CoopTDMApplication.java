@@ -13,7 +13,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
-import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -36,7 +35,6 @@ public class CoopTDMApplication extends Application {
 		client.post(CoopTDMParams.BASE_URL + "api/news.php", params, new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(String response) {
-				Log.v("COOPTDM", "response=" + response);
 				JSONObject jso_response = null;
 				try {
 					jso_response = new JSONObject(response);

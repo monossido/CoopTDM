@@ -148,6 +148,9 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 		case STRUTTURA_MUSEI:
 			inflater.inflate(R.menu.fragment_menu_musei, menu);
 			break;
+		case STRUTTURA_HOSTEL:
+			inflater.inflate(R.menu.fragment_menu_hostel, menu);
+			break;
 		default:
 			break;
 		}
@@ -161,6 +164,9 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 			if (item.getItemId() == R.id.facebook_settings) {
 				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/pages/Parco-Avventura-Le-Fiorine/376460802413091"));
 				startActivity(browserIntent);
+			} else if (item.getItemId() == R.id.tripadvisor_settings) {
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.tripadvisor.it/Attraction_Review-g1108616-d6754384-Reviews-Parco_Avventura_Le_Fiorine-Teolo_Province_of_Padua_Veneto.html"));
+				startActivity(browserIntent);
 			}
 			break;
 		case STRUTTURA_MUSEI:
@@ -169,6 +175,12 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 				startActivity(browserIntent);
 			} else if (item.getItemId() == R.id.twitter_settings) {
 				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/MuseiEuganei"));
+				startActivity(browserIntent);
+			}
+			break;
+		case STRUTTURA_HOSTEL:
+			if (item.getItemId() == R.id.tripadvisor_settings) {
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.tripadvisor.it/Hotel_Review-g1063369-d629798-Reviews-Venetian_Hostel-Monselice_Province_of_Padua_Veneto.html"));
 				startActivity(browserIntent);
 			}
 			break;

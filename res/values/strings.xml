@@ -4,6 +4,7 @@
     <string name="app_name">Cooperativa Terra Di Mezzo</string>
     <string name="action_settings">Settings</string>
     <string name="facebook_settings">Facebook</string>
+    <string name="tripadvisor_settings">Tripadvisor</string>
     <string name="twitter_settings">Twitter</string>
     <string name="hello_world">Hello world!</string>
     <string name="open_drawer">OpenDrawer</string>
@@ -23,7 +24,7 @@
     <string name="not_connection">C\'è stato un errore nel download delle news, controlla la tua connessione a internet\n(Scrolla per aggiornare)</string>
     <string name="pref_about_dialog"><Data>
 <![CDATA[ <h2>Cooperativa Sociale Terra di Mezzo</h2>Costituita nel giugno 2000, Ha sede legale a Padova in Corso Australia 67/A e sede operativa presso Galzignano Terme (PD), via Sottovenda 3 - Tel 0429.616969 - Fax 0429.616990. È composta in tutto da 34 soci, 26 dei quali sono soci lavoratori e 9 sono invece soci volontari che prestano la loro attività gratuitamente. Trattandosi di cooperativa sociale di tipo "B", alcuni dei soci lavoratori (6 dei 26) sono nella condizione di "persona svantaggiata". La Cooperativa è iscritta all\'Albo Regionale delle cooperative sociali.<br />
-<br /><br />Applicazione sviluppata da <b>Lorenzo Braghetto</b> (lorenzobraghetto.com) per <b>Cooperativa Terra di Mezzo</b><br><br>Licenza GPL - https://github.com/monossido/CoopTDM
+<br /><br />Applicazione sviluppata da <b>Lorenzo Braghetto</b> (lorenzobraghetto.com) per <b>Cooperativa Terra di Mezzo</b><br><br>Licenza GPL - <a href="https://github.com/monossido/CoopTDM">https://github.com/monossido/CoopTDM</a>
         <br><br>Software Open Source utilizzato:-ActionBarSherlock<br><br>Grafica creata da <b>Andrea Marson</b><br><br>versione 1.0]]>
 </Data></string>
 

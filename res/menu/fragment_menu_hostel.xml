@@ -2,12 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/facebook_settings"
-        android:icon="@drawable/fb_icon"
-        android:orderInCategory="100"
-        android:showAsAction="always"
-        android:title="@string/facebook_settings"/>
-    <item
         android:id="@+id/tripadvisor_settings"
         android:icon="@drawable/tipadvisor_icon"
         android:orderInCategory="100"
