@@ -26,7 +26,7 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 
 			NotificationFactory.showNotification(context, noti, NotificationFactory.NOTIFICATION_ID_NOTIFICATION);
 		} else if (intent.getExtras().getString("message_type").equals("cron")) {
-			boolean status = intent.getExtras().getBoolean("status");
+			boolean status = Boolean.parseBoolean(intent.getExtras().getString("status"));
 
 			SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
 			Editor edit = sp.edit();
@@ -35,5 +35,4 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 			edit.commit();
 		}
 	}
-
 }

@@ -27,6 +27,7 @@ import com.lorenzobraghetto.cooptdm.DeviceID;
 import com.lorenzobraghetto.cooptdm.R;
 import com.lorenzobraghetto.cooptdm.logic.CallbackNews;
 import com.lorenzobraghetto.cooptdm.logic.CoopTDMApplication;
+import com.lorenzobraghetto.cooptdm.logic.CoopTDMNewsService;
 
 public class SplashActivity extends Activity {
 
@@ -62,6 +63,7 @@ public class SplashActivity extends Activity {
 		};
 
 		((CoopTDMApplication) getApplication()).getNews(callback);
+		startService(new Intent(this, CoopTDMNewsService.class));
 	}
 
 	private boolean checkPlayServices() {

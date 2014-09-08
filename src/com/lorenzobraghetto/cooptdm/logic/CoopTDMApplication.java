@@ -62,7 +62,7 @@ public class CoopTDMApplication extends Application {
 				newsTot = new ArrayList<News>(news);
 				SharedPreferences pref = getSharedPreferences("CoopTDMSettings", Context.MODE_PRIVATE);
 				Editor editor = pref.edit();
-				editor.putInt("lastNewsId", news.get(news.size() - 1).getId());
+				editor.putInt("lastNewsId", news.get(0).getId());
 				editor.commit();
 				callback.onDownloaded();
 				generateUniqueColors(categories.size());
