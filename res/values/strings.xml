@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="tdm_green_light">#67b42d</color>
+    <color name="tdm_green_dark">#157c3d</color>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="app_name">Cooperativa Terra Di Mezzo</string>
     <string name="action_settings">Settings</string>
     <string name="facebook_settings">Facebook</string>
@@ -25,7 +30,7 @@
     <string name="pref_about_dialog"><Data>
 <![CDATA[ <h2>Cooperativa Sociale Terra di Mezzo</h2>Costituita nel giugno 2000, Ha sede legale a Padova in Corso Australia 67/A e sede operativa presso Galzignano Terme (PD), via Sottovenda 3 - Tel 0429.616969 - Fax 0429.616990. È composta in tutto da 34 soci, 26 dei quali sono soci lavoratori e 9 sono invece soci volontari che prestano la loro attività gratuitamente. Trattandosi di cooperativa sociale di tipo "B", alcuni dei soci lavoratori (6 dei 26) sono nella condizione di "persona svantaggiata". La Cooperativa è iscritta all\'Albo Regionale delle cooperative sociali.<br />
 <br /><br />Applicazione sviluppata da <b>Lorenzo Braghetto</b> (lorenzobraghetto.com) per <b>Cooperativa Terra di Mezzo</b><br><br>Licenza GPL - <a href="https://github.com/monossido/CoopTDM">https://github.com/monossido/CoopTDM</a>
-        <br><br>Software Open Source utilizzato:-ActionBarSherlock<br><br>Grafica creata da <b>Andrea Marson</b><br><br>versione 1.0]]>
+        <br><br>Software Open Source utilizzato:<br>-FadingActionBar<br>-android-async-http<br><br>Grafica creata da <b>Andrea Marson</b><br><br>versione %s]]>
 </Data></string>
 
     <!-- strutture -->
@@ -40,12 +45,12 @@ Domenica dalle 10.00 alle 19.00 (ultimo briefing ore 18.00)</string>
         (obbligatorio) area briefing 5€\n
         percorso blu 5€\n
         percorso rosso 8€\n
-        persorso nero 8€\n</string>
+        persorso nero 8€</string>
     <string name="parco_fiorine_dove">località Passo Fiorine \n
 Via Monte della Madonna\n
 35037 Teolo (Padova)\n
 Tel. 338.5360848\n
-Tel. 049.9131781\n</string>
+Tel. 049.9131781</string>
     <string name="parco_fiorine_presentazione">
 <![CDATA[<h2>Presentazione</h2>Finalmente un parco con percorsi acrobatici all\'interno del Parco Regionale dei Colli Euganei, situato presso il «Passo Fiorine» a Teolo. Un luogo di svago e socializzazione, nato per soddisfare la propria sete di avventura, voglia di sperimentarsi e soprattutto per essere più a contatto con la natura.
 <br><br>
@@ -61,23 +66,11 @@ L\'ingresso al parco è libero, si paga solamente per accedere ai percorsi acrob
 <h2>Abbigliamento</h2>
 Si raccomanda l\'uso di abbigliamento sportivo, consigliamo una T-SHIRT con pantaloni lunghi, scarpe da ginnastica o da trekking. Per affrontare i percorsi in maniera più confortevole: una bandana da usare come sottocasco e guanti da palestra, che eventualmente potete acquistare anche al Parco Avventura Le Fiorine. ]]>
     </string>
-    <string name="zeleghe_orario"><b>dal 5 Aprile al 02 Giugno 2014</b>\n
-Sabato dalle 15.00 alle 19.30 (ultimo briefing ore 18.30)\n
-Domenica dalle 10.00 alle 19.30 (ultimo briefing ore 18.30)\n\n<b>dal 7 Giugno al 7 Settembre 2014</b>\n
-Sabato e Domenica dalle 10.00 alle 20.00 (ultimo briefing ore 19.00)\n
-dal Lunedì al Venerdì dalle 15.30 alle 20.00 (ultimo briefing ore 19.00)\n\n<b>dal 8 Settembre al 28 Settembre 2014</b>\n
-Sabato dalle 15.00 alle 19.00 (ultimo briefing ore 18.00)\n
-Domenica dalle 10.00 alle 19.00 (ultimo briefing ore 18.00)</string>
-    <string name="zeleghe_costi">percorso verde 5€\n
-        (obbligatorio) area briefing 5€\n
-        percorso blu 5€\n
-        percorso rosso 8€\n
-        persorso nero 8€\n</string>
     <string name="zeleghe_dove">Via Armistizio, 298 \n
 Cesuna di Roana (VI)\n
 Tel. 0424.67515\n
 Tel. 349.4743227\n
-\n\n
+\n
 info@zeleghe.it</string>
     <string name="zeleghe_presentazione">
 <![CDATA[<h2>Presentazione</h2><em>"Le Zeleghe sono piccole fatine tessitrici di magnifiche tele; 
@@ -88,21 +81,30 @@ Un luogo pensato come centro di educazione ambientale immerso nella tranquillit�
 
 Organizzata in 3 piani (più un seminterrato), perfettamente adatti ad accogliere anche persone diversamente abili, la struttura offre 80 posti letto, divisi in 22 camere da 2 a 8 letti, una grande cucina completamente attrezzata, una sala da pranzo capiente con due terrazze che si affacciano al paesaggio montano, una sala conferenze, una stanza per giocare, un laboratorio didattico, un bar, nonché uno spogliatoio, comodo per lasciare le attrezzature da montagna. Luminosa d\'estate e calda e protettiva d\'inverno, è la soluzione ideale per diversi tipi di soggiorno e di esigenze. ]]>
     </string>
-    <string name="musei_orario"><b>dal 5 Aprile al 02 Giugno 2014</b>\n
-Sabato dalle 15.00 alle 19.30 (ultimo briefing ore 18.30)\n
-Domenica dalle 10.00 alle 19.30 (ultimo briefing ore 18.30)\n\n<b>dal 7 Giugno al 7 Settembre 2014</b>\n
-Sabato e Domenica dalle 10.00 alle 20.00 (ultimo briefing ore 19.00)\n
-dal Lunedì al Venerdì dalle 15.30 alle 20.00 (ultimo briefing ore 19.00)\n\n<b>dal 8 Settembre al 28 Settembre 2014</b>\n
-Sabato dalle 15.00 alle 19.00 (ultimo briefing ore 18.00)\n
-Domenica dalle 10.00 alle 19.00 (ultimo briefing ore 18.00)</string>
-    <string name="musei_costi">percorso verde 5€\n
-        (obbligatorio) area briefing 5€\n
-        percorso blu 5€\n
-        percorso rosso 8€\n
-        persorso nero 8€\n</string>
-    <string name="musei_dove">località Passo Fiorine \n
-MUSEI COLLI EUGANEI
-SEGRETERIA: da lun. a ven. dalle 9.00 alle 16.00 - sab. dalle 9.00 alle 12.00
+    <string name="musei_orario"><b>CAVA BOMBA:\nPrimavera e autunno (1 marzo - 15 giugno e 15 settembre - 31 ottobre)</b>\nSabato: ore 15:00 - 19:00\nDomenica e altri festivi: ore 09:30 - 12.30 / ore 15:00 - 19:00
+        \nDa Lunedì a Sabato mattina: su prenotazione per gruppi e scolaresche\n<b>Estate (16 giugno - 14 settembre)</b>\nDomenica e altri festivi: ore 15:00 - 19:00\nDa Lunedì al Sabato: su prenotazione gruppi
+        \n<b>Inverno (1 novembre - 28 febbraio)</b>\nSabato, Domenica e altri festivi: ore 15:00 - 18:00
+        \nDa Lunedì a Sabato mattina: su prenotazione per gruppi e scolaresche
+        \n\n<b>CASTELLO DI SAN MARTINO:\nPrimavera e autunno (1 marzo - 15 giugno e 15 settembre - 31 ottobre)</b>\nSabato: ore 15:00 - 19:00\nDomenica e altri festivi: ore 09:30 - 12.30 / ore 15:00 - 19:00
+        \nDa Lunedì a Sabato mattina: su prenotazione per gruppi e scolaresche\n<b>Estate (16 giugno - 14 settembre)</b>\nDomenica e altri festivi: ore 15:00 - 19:00\nDa Lunedì al Sabato: su prenotazione gruppi
+        \n<b>Inverno (1 novembre - 28 febbraio)</b>\nSabato, Domenica e altri festivi: ore 15:00 - 18:00
+		\n\n<b>VILLA BEATRICE:\nPrimavera (1 marzo - 15 giugno</b>\nSabato, Domenica e altri festivi: ore 10:30 - 18:00\nDa Lunedì a Venerdì: su prenotazione per gruppi e scolaresche
+		\n<b>Autunno (1 settembre - 31 ottobre)</b>\nSabato, Domenica e altri festivi: ore 10:30 - 17:00
+        \n<b>Estate e Inverno (1 novembre - 28 febbraio e 16 giugno - 31 agosto)</b>\nAperto solo su prenotazione per gruppi e scolaresche
+		\n<b>Orario d\'apertura al parco</b> Ingresso al parco libero\n Mercoledì ore 14:00 - 18:00
+		\nDal Giovedì alla Domenica ore 09:00 - 18:00
+		\n\n
+        \n<b>Chiusi:</b> 1 gennaio, 6 gennaio, Pasqua, 15 agosto, 1 novembre, 8 dicembre, 25 dicembre, 26 dicembre, 31 dicembre</string>
+    <string name="musei_costi"><b>CAVA BOMBA</b>\n<b>Ingresso al pubblico</b>\nBigllietto intero: 4€\nBiglietto ridotto: 2€
+        \n<b>Ingresso Visita Guidata</b>\nVisita guidata (2h): 110€ (min 15persone - max 30persone)
+        \n<b>Corsi attività didattica</b>\nMezza giornata (3h): 120€\nGiornata intera (3+2h) 160€\nIntervento in classe 80€
+        \n\n<b>CASTELLO DI SAN MARTINO</b>\n<b>Ingresso al pubblico</b>\nBigllietto intero: 4€\nBiglietto ridotto: 2€
+        \n<b>Ingresso Visita Guidata</b>\nVisita guidata (2h): 110€ (min 15persone - max 30persone)
+        \n<b>Corsi attività didattica</b>\nMezza giornata (3h): 120€\nGiornata intera (3+2h) 160€\nIntervento in classe 80€
+        \n\n<b>VILLA BEATRICE</b>\n<b>Ingresso al pubblico</b>\nBigllietto intero: 4€\nBiglietto ridotto: 2€
+        \n<b>Ingresso Visita Guidata</b>\nVisita guidata (2h): 110€ (min 15persone - max 30persone)
+        \n<b>Corsi attività didattica</b>\nMezza giornata (3h): 120€\nGiornata intera (3+2h) 160€\nIntervento in classe 80€</string>
+    <string name="musei_dove">SEGRETERIA: da lun. a ven. dalle 9.00 alle 16.00 - sab. dalle 9.00 alle 12.00
 Tel. +39.049.5738910 - Fax +39.049.9139183 - info@museicollieuganei.it</string>
     <string name="musei_presentazione">
 <![CDATA[<h2>Presentazione</h2>A pochi passi dalle città di Padova, Vicenza e Rovigo, incorniciati dal panorama dei Colli Euganei, si trovano tre Musei della Provincia di Padova.<br><br>
@@ -141,7 +143,8 @@ E-Mail info@venetianhostel.it</string>
 - Connessione Wi-Fi gratuita\n
 - Escursioni guidate\n
 - Servizio bar e ristoro\n
-- Terrazza panoramica</string>
+- Terrazza panoramica\n
+- Attività didattiche per gruppi e scuole</string>
     <string name="casa_dove">Via Sottovenda, 3 - 35030 Galzignano (PD)\n
 Tel. 049.9131781 - Fax 049.9139183\n
 ostelli@coopterradimezzo.com\n
@@ -149,7 +152,7 @@ casamarina@parcocollieuganei.com</string>
     <string name="casa_presentazione">
 <![CDATA[<h2>Casa Marina - Centro Educazione Ambientale</h2>
 Nel cuore dei Colli Euganei sul versante orientale del Monte Venda, in una delle aree più belle dal punto di vista paesaggistico, Casa Marina è il centro di educazione ambientale del Parco, calata nell\'ambiente naturale dove è facile entrare immediatamente in sintonia con la natura, la storia e le attività dell\'uomo. È sede di un interessante giardino botanico che dedica un settore alle piante officinali; è anche un ostello dotato di 24 posti letto.
-<b>Casa Marina è a disposizione per iniziative individuali, di associazioni, gruppi con fini culturali o sociali, basta prendere accordi con la segreteria.</b>]]>
+<br />Casa Marina è a disposizione per iniziative individuali, di associazioni, gruppi con fini culturali o sociali, basta prendere accordi con la segreteria.]]>
     </string>
     <string name="ostello_servizi">- Pernotto e prima colazione\n
 - Mezza pensione o completa\n
@@ -168,7 +171,7 @@ ostelli@coopterradimezzo.com</string>
     <string name="ostello_presentazione">
 <![CDATA[<h2>Ostello Colli Euganei</h2>
 Una struttura accogliente, nel comune di Baone, vicino a Monselice, dotata di 50 posti letto distribuiti in alcune camerate e stanze più piccole e riservate; è un luogo ideale per soggiorni scolastici. La vicinanza dell\'Ostello a luoghi di elevato interesse storico e naturalistico ne fanno un importante punto di partenza per escursioni nel Parco e per la visita a svariati centri medievali, quali per esempio Este, Arquà Petrarca, Monselice e Montagnana.
-<b>Ostello Colli Euganei è a disposizione per iniziative individuali, di associazioni, gruppi con fini culturali o sociali, basta prendere accordi con la segreteria.</b>]]>
+<br />Ostello Colli Euganei è a disposizione per iniziative individuali, di associazioni, gruppi con fini culturali o sociali, basta prendere accordi con la segreteria.]]>
     </string>
 
 </resources>

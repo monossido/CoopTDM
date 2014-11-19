@@ -3,10 +3,10 @@
     xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
 
     <item
-        android:id="@+id/tripadvisor_settings"
-        android:icon="@drawable/tipadvisor_icon"
+        android:id="@+id/facebook_settings"
+        android:icon="@drawable/fb_icon"
         android:orderInCategory="100"
-        android:title="@string/tripadvisor_settings"
+        android:title="@string/facebook_settings"
         yourapp:showAsAction="always"/>
 
 </menu>

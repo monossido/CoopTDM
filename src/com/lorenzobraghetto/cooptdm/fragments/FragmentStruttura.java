@@ -2,10 +2,17 @@ package com.lorenzobraghetto.cooptdm.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -19,14 +26,13 @@ import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.lorenzobraghetto.cooptdm.R;
+import com.lorenzobraghetto.cooptdm.ui.MainActivity;
 import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
+import com.manuelpeinado.fadingactionbar.view.ObservableScrollable;
+import com.manuelpeinado.fadingactionbar.view.OnScrollChangedCallback;
 
-public class FragmentStruttura extends SherlockFragment implements OnTabChangeListener, OnTouchListener {
+public class FragmentStruttura extends Fragment implements OnTabChangeListener, OnTouchListener, OnScrollChangedCallback {
 
 	public final static int STRUTTURA_PARCO = 0;
 	public final static int STRUTTURA_ZELEGHE = 1;
@@ -41,12 +47,28 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 	private int previousTab;
 	private TabHost mTabHost;
 	private int int_struttura;
+	private Drawable mActionBarBackgroundDrawable;
+	private ImageView mHeader;
+	private ObservableScrollable scrollview;
+	private int mLastDampedScroll = 0;
+	private Toolbar mToolBar;
 	public static final String ARG_IMAGE_RES = "image_source";
 	public static final String ARG_ACTION_BG_RES = "image_action_bs_res";
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = mFadingHelper.createView(inflater);
+		View view = inflater.inflate(R.layout.fragment_struttura, container, false);
+
+		mToolBar = (Toolbar) view.findViewById(R.id.toolbar);
+		((MainActivity) getActivity()).setNewToolbar(mToolBar, true);
+		mActionBarBackgroundDrawable = mToolBar.getBackground();
+
+		mHeader = (ImageView) view.findViewById(R.id.image_header);
+
+		scrollview = (ObservableScrollable) view.findViewById(R.id.scrollview);
+		scrollview.setOnScrollChangedCallback(this);
+
+		onScroll(-1, 0);
 
 		ImageView img_header = (ImageView) view.findViewById(R.id.image_header);
 		String[] items = getResources().getStringArray(R.array.drawerArray);
@@ -62,7 +84,6 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 		case STRUTTURA_PARCO:
 			img_header.setImageResource(R.drawable.strutture_parco_header);
 			getActivity().setTitle(items[2]);
-			getSherlockActivity().getSupportActionBar().setIcon(R.drawable.ico_1);
 			orari.setText(R.string.parco_fiorine_orario);
 			prezzi.setText(R.string.parco_fiorine_costi);
 			luogo.setText(R.string.parco_fiorine_dove);
@@ -71,14 +92,12 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 		case STRUTTURA_ZELEGHE:
 			img_header.setImageResource(R.drawable.strutture_zeleghe_header);
 			getActivity().setTitle(items[3]);
-			getSherlockActivity().getSupportActionBar().setIcon(R.drawable.ico_2);
 			luogo.setText(R.string.zeleghe_dove);
 			struttura_content.setText(Html.fromHtml(getString(R.string.zeleghe_presentazione)));
 			break;
 		case STRUTTURA_MUSEI:
 			img_header.setImageResource(R.drawable.strutture_musei_colli_euganei_header);
 			getActivity().setTitle(items[4]);
-			getSherlockActivity().getSupportActionBar().setIcon(R.drawable.ico_3);
 			orari.setText(R.string.musei_orario);
 			prezzi.setText(R.string.musei_costi);
 			luogo.setText(R.string.musei_dove);
@@ -87,7 +106,6 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 		case STRUTTURA_HOSTEL:
 			img_header.setImageResource(R.drawable.strutture_venetian_hostel_header);
 			getActivity().setTitle(items[5]);
-			getSherlockActivity().getSupportActionBar().setIcon(R.drawable.ico_4);
 			orari.setText(R.string.hostel_orario);
 			prezzi.setText(R.string.hostel_costi);
 			luogo.setText(R.string.hostel_dove);
@@ -96,7 +114,6 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 		case STRUTTURA_CASA:
 			img_header.setImageResource(R.drawable.strutture_casa_marina_header);
 			getActivity().setTitle(items[6]);
-			getSherlockActivity().getSupportActionBar().setIcon(R.drawable.ico_5);
 			orari.setText(R.string.casa_servizi);
 			luogo.setText(R.string.casa_dove);
 			struttura_content.setText(Html.fromHtml(getString(R.string.casa_presentazione)));
@@ -104,10 +121,9 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 		case STRUTTURA_OSTELLO:
 			img_header.setImageResource(R.drawable.strutture_ostello_colli_euganei_header);
 			getActivity().setTitle(items[7]);
-			getSherlockActivity().getSupportActionBar().setIcon(R.drawable.ico_6);
-			orari.setText(R.string.casa_servizi);
-			luogo.setText(R.string.casa_dove);
-			struttura_content.setText(Html.fromHtml(getString(R.string.casa_presentazione)));
+			orari.setText(R.string.ostello_servizi);
+			luogo.setText(R.string.ostello_dove);
+			struttura_content.setText(Html.fromHtml(getString(R.string.ostello_presentazione)));
 			break;
 		default:
 			break;
@@ -151,6 +167,9 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 		case STRUTTURA_HOSTEL:
 			inflater.inflate(R.menu.fragment_menu_hostel, menu);
 			break;
+		case STRUTTURA_CASA:
+			inflater.inflate(R.menu.fragment_menu_casa, menu);
+			break;
 		default:
 			break;
 		}
@@ -184,6 +203,12 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 				startActivity(browserIntent);
 			}
 			break;
+		case STRUTTURA_CASA:
+			if (item.getItemId() == R.id.facebook_settings) {
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/coopterradimezzo"));
+				startActivity(browserIntent);
+			}
+			break;
 		default:
 			break;
 		}
@@ -194,7 +219,7 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		mFadingHelper = new FadingActionBarHelper()
-				.actionBarBackground(R.drawable.ab_background_light)
+				.actionBarBackground(R.color.tdm_green_light)
 				.headerLayout(R.layout.fragment_header)
 				.contentLayout(R.layout.fragment_struttura);
 
@@ -262,6 +287,7 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 			expand(expanded_view);
 	}
 
+	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		if (MotionEvent.ACTION_DOWN == event.getAction()) {
 			previousTab = mTabHost.getCurrentTab();
@@ -275,6 +301,34 @@ public class FragmentStruttura extends SherlockFragment implements OnTabChangeLi
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public void onScroll(int l, int scrollPosition) {
+		int headerHeight = mHeader.getHeight() - mToolBar.getHeight();
+		float ratio = 0;
+		if (scrollPosition > 0 && headerHeight > 0)
+			ratio = (float) Math.min(Math.max(scrollPosition, 0), headerHeight) / headerHeight;
+
+		updateActionBarTransparency(ratio);
+		updateParallaxEffect(scrollPosition);
+	}
+
+	private void updateActionBarTransparency(float scrollRatio) {
+		int newAlpha = (int) (scrollRatio * 255);
+		mActionBarBackgroundDrawable.setAlpha(newAlpha);
+		mToolBar.setBackground(mActionBarBackgroundDrawable);
+		int color = Color.argb(newAlpha, 255, 255, 255);
+		mToolBar.setTitleTextColor(color);
+	}
+
+	private void updateParallaxEffect(int scrollPosition) {
+		float damping = 0.5f;
+		int dampedScroll = (int) (scrollPosition * damping);
+		int offset = mLastDampedScroll - dampedScroll;
+		mHeader.offsetTopAndBottom(-offset);
+
+		mLastDampedScroll = dampedScroll;
 	}
 
 }

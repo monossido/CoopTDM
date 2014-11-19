@@ -2,5 +2,6 @@
 <resources>
 
     <integer name="config_slide_time">800</integer>
+    <integer name="default_actionbar_size">?attr/actionBarSize</integer>
 
 </resources>

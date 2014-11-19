@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lorenzobraghetto.cooptdm"
-    android:versionCode="3"
-    android:versionName="1.2" >
+    android:versionCode="7"
+    android:versionName="1.6" >
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -12,6 +12,7 @@
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <permission
         android:name="com.lorenzobraghetto.cooptdm.C2D_MESSAGE"
@@ -40,12 +41,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.lorenzobraghetto.cooptdm.ui.StruttureActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.TranslucentActionBar" >
-        </activity>
-        <activity
-            android:name="com.lorenzobraghetto.cooptdm.ui.Settings"
+            android:name="com.lorenzobraghetto.cooptdm.fragments.SettingsFragment"
             android:label="@string/app_name" >
         </activity>
 

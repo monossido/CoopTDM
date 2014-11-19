@@ -8,6 +8,7 @@
         android:id="@+id/icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_centerVertical="true"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
@@ -30,8 +31,8 @@
             android:ellipsize="end"
             android:focusable="false"
             android:singleLine="true"
-            android:textColor="#fff"
-            android:textSize="18sp" />
+            android:textColor="#222222"
+            android:textSize="14sp" />
     </LinearLayout>
 
 </RelativeLayout>

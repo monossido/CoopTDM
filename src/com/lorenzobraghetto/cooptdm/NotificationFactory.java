@@ -32,6 +32,7 @@ public class NotificationFactory {
 			notificationBuilder.setContentIntent(notificationIntent);
 		} else {
 			Intent app = new Intent(context, SplashActivity.class);
+			app.putExtra("fromNotif", true);
 			PendingIntent pintent = PendingIntent.getActivity(context, 0, app, PendingIntent.FLAG_UPDATE_CURRENT);
 
 			notificationBuilder.setContentIntent(pintent);

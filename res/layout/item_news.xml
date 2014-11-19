@@ -1,108 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.lorenzobraghetto.cooptdm.ui.NowLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#e3e3e3"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <RelativeLayout
-        style="@style/nowCardStyle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:background="#e3e3e3"
+        card_view:cardCornerRadius="4dp"
+        card_view:contentPadding="5dp" >
 
         <RelativeLayout
-            android:id="@+id/header"
+            android:id="@+id/card_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp" >
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/titoloNews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toLeftOf="@+id/expandImg"
+                    android:textColor="#494949"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/expandImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:maxWidth="70dp"
+                    android:src="@drawable/navigation_expand" />
+
+                <TextView
+                    android:id="@+id/dataPubblicazioneNews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/titoloNews"
+                    android:textColor="#a0a0a0"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/luogoNews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/dataPubblicazioneNews"
+                    android:layout_toLeftOf="@+id/expandImg"
+                    android:textColor="#0071bc"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
             <TextView
-                android:id="@+id/titoloNews"
+                android:id="@+id/testoNews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp"
+                android:autoLink="web|email|phone"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_marginRight="2dp"
-                android:layout_marginTop="5dp"
-                android:layout_toLeftOf="@+id/expandImg"
-                android:textColor="#a2c2a1"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/expandImg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5dp"
-                android:maxWidth="70dp"
-                android:src="@drawable/navigation_expand" />
+                android:layout_below="@+id/testoNews"
+                android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/dataPubblicazioneNews"
+                android:id="@+id/oraNews"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/titoloNews"
-                android:textColor="#a0a0a0"
+                android:layout_alignLeft="@+id/data"
+                android:layout_below="@+id/data"
                 android:textSize="13sp" />
 
-            <TextView
-                android:id="@+id/luogoNews"
-                android:layout_width="wrap_content"
+            <HorizontalScrollView
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/dataPubblicazioneNews"
-                android:layout_toLeftOf="@+id/expandImg"
-                android:textColor="#0071bc"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_below="@+id/oraNews"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="8dp"
+                android:scrollbars="none" >
+
+                <LinearLayout
+                    android:id="@+id/hscrollview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+            </HorizontalScrollView>
         </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
-        <TextView
-            android:id="@+id/testoNews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/header"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="5dp"
-            android:autoLink="web|email|phone"
-            android:textSize="15sp"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/testoNews"
-            android:layout_marginLeft="5dp"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/oraNews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/data"
-            android:layout_below="@+id/data"
-            android:textSize="13sp" />
-
-        <HorizontalScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/oraNews"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="8dp"
-            android:scrollbars="none" >
-
-            <LinearLayout
-                android:id="@+id/hscrollview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-            </LinearLayout>
-        </HorizontalScrollView>
-    </RelativeLayout>
-
-</com.lorenzobraghetto.cooptdm.ui.NowLayout>
+</LinearLayout>

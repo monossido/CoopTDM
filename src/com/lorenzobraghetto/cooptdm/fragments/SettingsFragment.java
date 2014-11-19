@@ -1,4 +1,4 @@
-package com.lorenzobraghetto.cooptdm.ui;
+package com.lorenzobraghetto.cooptdm.fragments;
 
 import android.app.Dialog;
 import android.content.SharedPreferences;
@@ -10,16 +10,21 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceManager;
+import android.support.v4.preference.PreferenceFragment;
 import android.text.Html;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.lorenzobraghetto.cooptdm.R;
+import com.lorenzobraghetto.cooptdm.ui.MainActivity;
 
-public class Settings extends SherlockPreferenceActivity {
+public class SettingsFragment extends PreferenceFragment {
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		MainActivity activity = (MainActivity) getActivity();
+		activity.setNewToolbar(null, false);
 
 		addPreferencesFromResource(R.xml.preference);
 
@@ -30,14 +35,14 @@ public class Settings extends SherlockPreferenceActivity {
 			public boolean onPreferenceClick(Preference preference) {
 				PackageInfo pInfo = null;
 				try {
-					pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+					pInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
 				} catch (NameNotFoundException e) {
 					e.printStackTrace();
 				}
 				String version = pInfo.versionName;
 				String dialogText = String.format(getString(R.string.pref_about_dialog), version);
 
-				Dialog dialog = new Dialog(Settings.this);
+				Dialog dialog = new Dialog(getActivity());
 				dialog.setContentView(R.layout.custom_dialog);
 				dialog.setTitle(R.string.pref_about);
 
@@ -55,7 +60,7 @@ public class Settings extends SherlockPreferenceActivity {
 
 			@Override
 			public boolean onPreferenceClick(Preference preference) {
-				SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(Settings.this);
+				SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
 				Editor edit = sp.edit();
 				edit.putBoolean("notification", preference.isEnabled());
 				edit.commit();

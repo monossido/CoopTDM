@@ -1,4 +1,4 @@
-CoopTDM
+﻿CoopTDM
 =======
 
 ## Cooperativa Sociale Terra di Mezzo
@@ -12,6 +12,6 @@ Licenza GPL
 
 
 Software Open Source utilizzato:
--ActionBarSherlock
+-android-http-async
 
 Grafica creata da Andrea Marson

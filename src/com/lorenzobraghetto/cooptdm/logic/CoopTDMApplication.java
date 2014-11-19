@@ -24,7 +24,7 @@ public class CoopTDMApplication extends Application {
 	private List<News> news = new ArrayList<News>();
 	private List<News> newsTot = new ArrayList<News>();
 	private List<Categories> categories = new ArrayList<Categories>();
-	private ArrayList<Integer> colors = new ArrayList<Integer>();
+	private ArrayList<Integer[]> colors = new ArrayList<Integer[]>();
 
 	public void getNews(final CallbackNews callback) {
 		news.clear();
@@ -73,6 +73,41 @@ public class CoopTDMApplication extends Application {
 				callback.onDownloaded();
 			}
 		});
+
+	}
+
+	public void getNewsPaging(Integer page, final CallbackNews callback) {
+		news.clear();
+		AsyncHttpClient client = new AsyncHttpClient();
+		RequestParams params = new RequestParams();
+		params.put("api_key", CoopTDMParams.API_KEY_MIO);
+		params.put("page", page.toString());
+		client.post(CoopTDMParams.BASE_URL + "api/news.php", params, new AsyncHttpResponseHandler() {
+			@Override
+			public void onSuccess(String response) {
+				JSONObject jso_response = null;
+				try {
+					jso_response = new JSONObject(response);
+					JSONArray jsa = jso_response.getJSONArray("news");
+
+					for (int i = 0; i < jsa.length(); i++) {
+						JSONObject jso = jsa.getJSONObject(i);
+
+						news.add(new News(jso.getInt("id"), jso.getString("titolo"), jso.getString("data")
+								, jso.getString("ora"), jso.getString("luogo")
+								, jso.getString("testo"), jso.getInt("categoria"), jso.getString("tags"), jso.getString("dataPubblicazione")));
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				newsTot.addAll(news);
+				callback.onDownloaded();
+			}
+
+			public void onFailure(Throwable error, String content) {
+				callback.onDownloaded();
+			}
+		});
 	}
 
 	public List<News> getNewsList(Integer idCategoria) {
@@ -97,29 +132,83 @@ public class CoopTDMApplication extends Application {
 		return categories;
 	}
 
-	public Integer getCategoryColor(int category_int) {
-		return colors.get(category_int);
+	public Integer[] getCategoryColor(int category_int) {
+		return colors.get(category_int - 1); //Non esiste category_int = 0
 	}
 
-	private void generateUniqueColors(int amount) { //TODO
-		if (colors.size() < amount)
-			colors.add(Color.parseColor("#d10000"));
-		if (colors.size() < amount)
-			colors.add(Color.parseColor("#2b7190"));
-		if (colors.size() < amount)
-			colors.add(Color.parseColor("#ff003b"));
-		if (colors.size() < amount)
-			colors.add(Color.parseColor("#2b9032"));
-		if (colors.size() < amount)
-			colors.add(Color.parseColor("#00bbca"));
-		if (colors.size() < amount)
-			colors.add(Color.parseColor("#cf9600"));
-		if (colors.size() < amount)
-			colors.add(Color.parseColor("#000000"));
-		if (colors.size() < amount)
-			colors.add(Color.parseColor("#00bcca"));
-		if (colors.size() < amount)
-			colors.add(Color.parseColor("#00beca"));
+	private void generateUniqueColors(int amount) {
+		if (colors.size() < amount) {
+			Integer[] arraycolor = { Color.parseColor("#cc0000")
+					, Color.parseColor("#ff3300")
+					, Color.parseColor("#ff6600")
+					, Color.parseColor("#ff9900")
+					, Color.parseColor("#ffcc33") };
+			colors.add(arraycolor);
+		}
+		if (colors.size() < amount) {
+			Integer[] arraycolor = { Color.parseColor("#2b7190")
+					, Color.parseColor("#2882a0")
+					, Color.parseColor("#288282")
+					, Color.parseColor("#28966e")
+					, Color.parseColor("#28a050") };
+			colors.add(arraycolor);
+		}
+		if (colors.size() < amount) {
+			Integer[] arraycolor = { Color.parseColor("#d22852")
+					, Color.parseColor("#dc4c65")
+					, Color.parseColor("#dc6e7a")
+					, Color.parseColor("#e68c93")
+					, Color.parseColor("#e6aa96") };
+			colors.add(arraycolor);
+		}
+		if (colors.size() < amount) {
+			Integer[] arraycolor = { Color.parseColor("#2baab9")
+					, Color.parseColor("#3278c8")
+					, Color.parseColor("#235a96")
+					, Color.parseColor("#645096")
+					, Color.parseColor("#964696") };
+			colors.add(arraycolor);
+		}
+		if (colors.size() < amount) {
+			Integer[] arraycolor = { Color.parseColor("#f0a11a")
+					, Color.parseColor("#dcc818")
+					, Color.parseColor("#aac832")
+					, Color.parseColor("#6eb428")
+					, Color.parseColor("#50a032") };
+			colors.add(arraycolor);
+		}
+		if (colors.size() < amount) {
+			Integer[] arraycolor = { Color.parseColor("#000000")
+					, Color.parseColor("#28001e")
+					, Color.parseColor("#50193e")
+					, Color.parseColor("#781b5b")
+					, Color.parseColor("#960078") };
+			colors.add(arraycolor);
+		}
+		if (colors.size() < amount) {
+			Integer[] arraycolor = { Color.parseColor("#32aa8c")
+					, Color.parseColor("#50b478")
+					, Color.parseColor("#6eb450")
+					, Color.parseColor("#82c85a")
+					, Color.parseColor("#96d25a") };
+			colors.add(arraycolor);
+		}
+		if (colors.size() < amount) {
+			Integer[] arraycolor = { Color.parseColor("#be4b4b")
+					, Color.parseColor("#be644b")
+					, Color.parseColor("#be7d4b")
+					, Color.parseColor("#c8964b")
+					, Color.parseColor("#dcaf4b") };
+			colors.add(arraycolor);
+		}
+		if (colors.size() < amount) {
+			Integer[] arraycolor = { Color.parseColor("#cc0000")
+					, Color.parseColor("#ff3300")
+					, Color.parseColor("#ff6600")
+					, Color.parseColor("#ff9900")
+					, Color.parseColor("#ffcc33") };
+			colors.add(arraycolor);
+		}
 	}
 
 }

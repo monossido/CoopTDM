@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,6 +23,7 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.lorenzobraghetto.cooptdm.BootReceiver;
 import com.lorenzobraghetto.cooptdm.CoopTDMParams;
 import com.lorenzobraghetto.cooptdm.DeviceID;
 import com.lorenzobraghetto.cooptdm.R;
@@ -42,7 +44,6 @@ public class SplashActivity extends Activity {
 		if (checkPlayServices()) {
 			gcm = GoogleCloudMessaging.getInstance(this);
 			regid = getRegistrationId(this);
-			Log.v("COOPTDM", "regid=" + regid);
 
 			if (regid.isEmpty()) {
 				registerInBackground();
@@ -63,7 +64,13 @@ public class SplashActivity extends Activity {
 		};
 
 		((CoopTDMApplication) getApplication()).getNews(callback);
-		startService(new Intent(this, CoopTDMNewsService.class));
+
+		Intent serviceIntent = new Intent(getApplicationContext(), CoopTDMNewsService.class);
+		boolean alarmUp = (PendingIntent.getService(getApplicationContext(), 0,
+				serviceIntent,
+				PendingIntent.FLAG_NO_CREATE) != null);
+		if (!alarmUp)
+			BootReceiver.setAlarm(getApplicationContext());
 	}
 
 	private boolean checkPlayServices() {

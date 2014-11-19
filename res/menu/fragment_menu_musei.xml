@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
 
     <item
         android:id="@+id/facebook_settings"
         android:icon="@drawable/fb_icon"
         android:orderInCategory="100"
-        android:showAsAction="always"
-        android:title="@string/facebook_settings"/>
+        android:title="@string/facebook_settings"
+        yourapp:showAsAction="always"/>
     <item
         android:id="@+id/twitter_settings"
         android:icon="@drawable/tw_icon"
         android:orderInCategory="100"
-        android:showAsAction="always"
-        android:title="@string/twitter_settings"/>
+        android:title="@string/twitter_settings"
+        yourapp:showAsAction="always"/>
 
 </menu>
